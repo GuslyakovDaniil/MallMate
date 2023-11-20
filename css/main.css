@@ -37,7 +37,7 @@ body {
 #floorContainer {
     position: fixed;
     top: 10px;
-    left: 85%;
+    left: 83%;
     display: flex;
     align-items: center;
     z-index: 2;
