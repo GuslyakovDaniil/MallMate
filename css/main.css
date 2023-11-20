@@ -34,7 +34,17 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+#floorContainer {
+    position: fixed;
+    top: 10px;
+    left: 85%;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 #searchInput {
     margin-right: 5px;
     padding: 8px;
@@ -55,7 +65,23 @@ body {
     font-size: 14px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+/* Добавленные стили для кнопок */
+a button {
+    padding: 10px 16px;
+    margin: 5px;
+    background-color: rgb(31, 212, 170); 
+    color: #9c1e1e;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none; /* Убирает стандартное подчеркивание для ссылок */
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+a button:hover {
+    background-color: #0056b3;
+}
 #searchButton:hover,
 #filterButton:hover {
     background-color: #0056b3;
