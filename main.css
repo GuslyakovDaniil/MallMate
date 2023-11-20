@@ -1,19 +1,21 @@
 body {
+    background-image: url('/img/fon1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: 0;
-    overflow: hidden; 
-    
+    overflow: hidden;
 }
 
 #mapContainer {
     position: relative;
-    width: 100vw; /* Заполнить 100% ширины экрана */
-    height: 100vh; /* Заполнить 100% высоты экрана */
-    overflow: hidden; /* Скрыть содержимое, выходящее за границы контейнера */
+    width: 100vw; 
+    height: 100vh; 
+    overflow: hidden; 
 }
 
 #floorSvg {
     cursor: grab;
-    will-change: transform; /* Enable hardware acceleration */
+    will-change: transform; 
 }
 
 #floorSvg.grabbing {
@@ -45,7 +47,7 @@ body {
 #filterButton {
     padding: 10px 16px;
     margin-left: 5px;
-    background-color: rgb(31, 212, 170); /* Button background color */
+    background-color: rgb(31, 212, 170); 
     color: #9c1e1e;
     border: none;
     border-radius: 6px;
@@ -110,7 +112,7 @@ body {
 }
 
 .selected {
-    color: rgb(31, 212, 170); /* Измените цвет на ваш выбор */
+    color: rgb(31, 212, 170);
 }
 #shopInfoModal {
     position: absolute;

@@ -178,7 +178,7 @@ function showShopInfo(shopName, photoSrc, description) {
     shopDescription.innerHTML = formattedDescription;
 
     // Dynamically adjust the image size (you can adjust these values as needed)
-    shopPhoto.style.width = '200px'; // Set the desired width
+    shopPhoto.style.width = '280px'; // Set the desired width
     shopPhoto.style.height = 'auto'; // Maintain the aspect ratio
 
     // Display the modal window
