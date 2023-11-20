@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    overflow: hidden; 
+    
+}
+
+#mapContainer {
+    position: relative;
+    width: 100vw; /* Заполнить 100% ширины экрана */
+    height: 100vh; /* Заполнить 100% высоты экрана */
+    overflow: hidden; /* Скрыть содержимое, выходящее за границы контейнера */
+}
+
+#floorSvg {
+    cursor: grab;
+    will-change: transform; /* Enable hardware acceleration */
+}
+
+#floorSvg.grabbing {
+    cursor: grabbing;
+}
+
+#searchContainer {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    background-color: #575757; 
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#searchInput {
+    margin-right: 5px;
+    padding: 8px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#searchButton,
+#filterButton {
+    padding: 10px 16px;
+    margin-left: 5px;
+    background-color: rgb(31, 212, 170); /* Button background color */
+    color: #9c1e1e;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#searchButton:hover,
+#filterButton:hover {
+    background-color: #0056b3;
+}
+
+#filterContainer {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #575757;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filterSection {
+    margin-bottom: 10px;
+}
+
+.filterDropdown {
+    padding: 10px 16px;
+    background-color: rgb(31, 212, 170); 
+    color: #9c1e1e;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filterDropdown:hover {
+    background-color: #0056b3;
+}
+
+.dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdownContent label {
+    padding: 8px;
+    display: block;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.dropdownContent label:hover {
+    background-color: #ddd;
+}
+
+.selected {
+    color: rgb(31, 212, 170); /* Измените цвет на ваш выбор */
+}
+#shopInfoModal {
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: #f9f9f9;
+}
