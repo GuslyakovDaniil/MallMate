@@ -50,7 +50,9 @@ function performSearch() {
         var clickEvent = new Event('click');
         shopElement.dispatchEvent(clickEvent);
     } else {
-        console.log('Магазин не найден');
+        // Если магазин найден, вызвать событие click на нем
+        var clickEvent = new Event('click');
+        shopElement.dispatchEvent(clickEvent);
     }
 
     // Дополнительная логика поиска может быть добавлена здесь

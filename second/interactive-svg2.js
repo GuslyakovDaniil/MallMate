@@ -41,6 +41,20 @@ function performSearch() {
     // Ваш код для обработки поиска
     var searchTerm = document.getElementById('searchInput').value;
     console.log('Вы выполнили поиск по:', searchTerm);
+
+    // Найти магазин по введенному ID
+    var shopElement = document.getElementById(searchTerm);
+
+    if (shopElement) {
+        // Если магазин найден, вызвать событие click на нем
+        var clickEvent = new Event('click');
+        shopElement.dispatchEvent(clickEvent);
+    } else {
+        // Если магазин найден, вызвать событие click на нем
+        var clickEvent = new Event('click');
+        shopElement.dispatchEvent(clickEvent);
+    }
+
     // Дополнительная логика поиска может быть добавлена здесь
 }
 
