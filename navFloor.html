@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A* Algorithm Example</title>
+</head>
+<body>
+    <svg id="svg-container" width="500" height="500">
+        <g id="grid">
+            <!-- Вертикальные линии сетки -->
+            <line x1="50" y1="0" x2="50" y2="500" stroke="black"/>
+            <line x1="100" y1="0" x2="100" y2="500" stroke="black"/>
+            <line x1="150" y1="0" x2="150" y2="500" stroke="black"/>
+            <line x1="200" y1="0" x2="200" y2="500" stroke="black"/>
+            <line x1="250" y1="0" x2="250" y2="500" stroke="black"/>
+            <line x1="300" y1="0" x2="300" y2="500" stroke="black"/>
+            <line x1="350" y1="0" x2="350" y2="500" stroke="black"/>
+            <line x1="400" y1="0" x2="400" y2="500" stroke="black"/>
+            <line x1="450" y1="0" x2="450" y2="500" stroke="black"/>
+
+            <!-- Горизонтальные линии сетки -->
+            <line x1="0" y1="50" x2="500" y2="50" stroke="black"/>
+            <line x1="0" y1="100" x2="500" y2="100" stroke="black"/>
+            <line x1="0" y1="150" x2="500" y2="150" stroke="black"/>
+            <line x1="0" y1="200" x2="500" y2="200" stroke="black"/>
+            <line x1="0" y1="250" x2="500" y2="250" stroke="black"/>
+            <line x1="0" y1="300" x2="500" y2="300" stroke="black"/>
+            <line x1="0" y1="350" x2="500" y2="350" stroke="black"/>
+            <line x1="0" y1="400" x2="500" y2="400" stroke="black"/>
+            <line x1="0" y1="450" x2="500" y2="450" stroke="black"/>
+        </g>
+
+        <rect x="50" y="50" width="50" height="50" fill="gray"/>
+        <rect x="200" y="100" width="50" height="100" fill="gray"/>
+        <rect x="350" y="200" width="50" height="50" fill="gray"/>
+        <rect x="100" y="300" width="200" height="50" fill="gray"/>
+        <rect x="400" y="400" width="50" height="50" fill="gray"/>
+
+        <circle id="start" cx="25" cy="25" r="10" fill="green" />
+        <circle id="end" cx="475" cy="475" r="10" fill="red" />
+    </svg>
+
+    <script>
+        function aStarAlgorithm(startX, startY, endX, endY, obstacles) {
+            var startCell = pointToCell(startX, startY);
+            var endCell = pointToCell(endX, endY);
+
+            var openList = [];
+            var closedList = [];
+
+            var startNode = createNode(startCell, null, 0, heuristic(startCell, endCell));
+            openList.push(startNode);
+
+            while (openList.length > 0) {
+                var currentNode = findLowestCostNode(openList);
+                openList = removeFromList(openList, currentNode);
+                closedList.push(currentNode);
+
+                if (currentNode.cell.x === endCell.x && currentNode.cell.y === endCell.y) {
+                    return reconstructPath(currentNode);
+                }
+
+                var neighbors = getNeighbors(currentNode.cell, obstacles);
+
+                for (var i = 0; i < neighbors.length; i++) {
+                    var neighbor = neighbors[i];
+
+                    if (isInList(closedList, neighbor)) {
+                        continue;
+                    }
+
+                    var tentativeGScore = currentNode.gScore + 1;
+
+                    if (!isInList(openList, neighbor) || tentativeGScore < neighbor.gScore) {
+                        if (!isInList(openList, neighbor)) {
+                            openList.push(createNode(neighbor, currentNode, tentativeGScore, heuristic(neighbor, endCell)));
+                        } else {
+                            var existingNode = findNodeInList(openList, neighbor);
+                            existingNode.gScore = tentativeGScore;
+                            existingNode.parent = currentNode;
+                        }
+                    }
+                }
+            }
+
+            return [];
+        }
+
+        function pointToCell(x, y) {
+            return {
+                x: Math.floor(x / 50),
+                y: Math.floor(y / 50)
+            };
+        }
+
+        function heuristic(cell, target) {
+            return Math.abs(cell.x - target.x) + Math.abs(cell.y - target.y);
+        }
+
+        function createNode(cell, parent, gScore, hScore) {
+            return {
+                cell: cell,
+                parent: parent,
+                gScore: gScore,
+                hScore: hScore
+            };
+        }
+
+        function findLowestCostNode(list) {
+            return list.reduce(function (lowest, node) {
+                return node.gScore + node.hScore < lowest.gScore + lowest.hScore ? node : lowest;
+            }, list[0]);
+        }
+
+        function removeFromList(list, node) {
+            return list.filter(function (el) {
+                return el !== node;
+            });
+        }
+
+        function isInList(list, cell) {
+            return list.some(function (node) {
+                return node.cell.x === cell.x && node.cell.y === cell.y;
+            });
+        }
+
+        function findNodeInList(list, cell) {
+            return list.find(function (node) {
+                return node.cell.x === cell.x && node.cell.y === cell.y;
+            });
+        }
+
+        function getNeighbors(cell, obstacles) {
+            var neighbors = [];
+
+            for (var i = -1; i <= 1; i++) {
+                for (var j = -1; j <= 1; j++) {
+                    var neighbor = { x: cell.x + i, y: cell.y + j };
+
+                    if (neighbor.x >= 0 && neighbor.x < 10 && neighbor.y >= 0 && neighbor.y < 10) {
+                        if (!obstacles.some(function (obstacle) {
+                            return neighbor.x >= obstacle.x && neighbor.x < obstacle.x + obstacle.width &&
+                                neighbor.y >= obstacle.y && neighbor.y < obstacle.y + obstacle.height;
+                        })) {
+                            neighbors.push(neighbor);
+                        }
+                    }
+                }
+            }
+
+            return neighbors;
+        }
+
+        function reconstructPath(node) {
+            var path = [];
+            while (node !== null) {
+                path.unshift([node.cell.x * 50 + 25, node.cell.y * 50 + 25]);
+                node = node.parent;
+            }
+            return path;
+        }
+
+        var svgContainer = document.getElementById('svg-container');
+        var start = document.getElementById('start');
+        var end = document.getElementById('end');
+        var grid = document.getElementById('grid');
+
+        start.addEventListener('click', function() {
+            clearPath();
+            startAStar();
+        });
+
+        end.addEventListener('click', function() {
+            clearPath();
+            startAStar();
+        });
+
+        grid.addEventListener('mousedown', function(event) {
+            var mouseX = event.clientX;
+            var mouseY = event.clientY;
+
+            if (!start.getAttribute('cx')) {
+                start.setAttribute('cx', mouseX);
+                start.setAttribute('cy', mouseY);
+            } else if (!end.getAttribute('cx')) {
+                end.setAttribute('cx', mouseX);
+                end.setAttribute('cy', mouseY);
+                startAStar();
+            }
+        });
+
+        function startAStar() {
+            var startX = parseFloat(start.getAttribute('cx'));
+            var startY = parseFloat(start.getAttribute('cy'));
+            var endX = parseFloat(end.getAttribute('cx'));
+            var endY = parseFloat(end.getAttribute('cy'));
+
+            var obstacles = [
+                { x: 1, y: 1, width: 1, height: 1 },
+                { x: 4, y: 2, width: 1, height: 2 },
+                { x: 7, y: 4, width: 1, height: 1 },
+                { x: 2, y: 6, width: 4, height: 1 },
+                { x: 8, y: 8, width: 1, height: 1 }
+            ];
+
+            var path = aStarAlgorithm(startX, startY, endX, endY, obstacles);
+            drawPath(path);
+        }
+
+        function clearPath() {
+            var pathElements = document.getElementsByClassName('path');
+            while (pathElements.length > 0) {
+                pathElements[0].remove();
+            }
+        }
+
+        function drawPath(path) {
+            var pathElement = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            pathElement.setAttribute('class', 'path');
+            pathElement.setAttribute('x1', path[0][0]);
+            pathElement.setAttribute('y1', path[0][1]);
+            for (var i = 1; i < path.length; i++) {
+                pathElement.setAttribute('x2', path[i][0]);
+                pathElement.setAttribute('y2', path[i][1]);
+                svgContainer.appendChild(pathElement.cloneNode(true));
+                pathElement.setAttribute('x1', path[i][0]);
+                pathElement.setAttribute('y1', path[i][1]);
+            }
+        }
+    </script>
+</body>
+</html>
