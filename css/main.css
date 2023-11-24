@@ -34,6 +34,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 #floorContainer {
     position: fixed;
     top: 10px;
@@ -45,6 +46,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 #searchInput {
     margin-right: 5px;
     padding: 8px;
@@ -65,7 +67,7 @@ body {
     font-size: 14px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-/* Добавленные стили для кнопок */
+
 a button {
     padding: 10px 16px;
     margin: 5px;
@@ -75,13 +77,15 @@ a button {
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
-    text-decoration: none; /* Убирает стандартное подчеркивание для ссылок */
+    text-decoration: none;
     display: inline-block;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 a button:hover {
     background-color: #0056b3;
 }
+
 #searchButton:hover,
 #filterButton:hover {
     background-color: #0056b3;
@@ -140,6 +144,7 @@ a button:hover {
 .selected {
     color: rgb(31, 212, 170);
 }
+
 #shopInfoModal {
     position: absolute;
     top: 40%;
@@ -147,4 +152,28 @@ a button:hover {
     transform: translate(-50%, -50%);
     z-index: 2;
     background-color: #f9f9f9;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+    #mapContainer, #searchContainer, #floorContainer {
+        width: 100%;
+        height: auto;
+    }
+
+    #floorSvg {
+        width: 100%;
+        height: auto;
+        transform: none;
+    }
+
+    #searchContainer, #floorContainer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filterDropdown, #searchButton, #filterButton {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
 }

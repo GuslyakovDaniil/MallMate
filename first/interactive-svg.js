@@ -45,16 +45,18 @@ function performSearch() {
     // Найти магазин по введенному ID
     var shopElement = document.getElementById(searchTerm);
 
-    if (shopElement) {
+    if (shopElement !== null) {
         // Если магазин найден, вызвать событие click на нем
         var clickEvent = new Event('click');
         shopElement.dispatchEvent(clickEvent);
     } else {
-        console.log('Магазин не найден');
+        sessionStorage.setItem('searchTerm', searchTerm);
+        window.location.href = "/second/secondFloor.html";
     }
 
     // Дополнительная логика поиска может быть добавлена здесь
 }
+
 
 
 function toggleFilterContainer() {

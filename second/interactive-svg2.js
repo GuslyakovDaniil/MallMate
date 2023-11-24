@@ -36,13 +36,61 @@ floorSvg.addEventListener('wheel', (e) => {
     floorSvg.style.transform = `translate(${currentTranslateX}px, ${currentTranslateY}px) scale(${currentScale})`;
 });
 
+function handleSearchById(id) {
+    // Check if the element with the specified ID exists
+    var inputElement = document.getElementById(id);
+
+    if (inputElement !== null) {
+        // Ваш код для обработки поиска
+        var searchTerm = inputElement.value;
+        console.log('Вы выполнили поиск по:', searchTerm);
+
+        // Найти магазин по введенному ID
+        var shopElement = document.getElementById(searchTerm);
+
+        if (shopElement !== null) {
+            // Если магазин найден, вызвать событие click на нем
+            var clickEvent = new Event('click');
+            shopElement.dispatchEvent(clickEvent);
+        }
+    } else {
+        console.log('Элемент с ID ' + id + ' не найден.');
+    }
+}
+
 // Поиск
 function performSearch() {
+    var shopID = sessionStorage.getItem('searchTerm');
+    if (shopID !== null){
+        console.log('Вы выполнили поиск по:', shopID);
+    // Найти магазин по введенному ID
+    var shopElement = document.getElementById(shopID);
+
+    if (shopElement !== null) {
+        // Если магазин найден, вызвать событие click на нем
+        var clickEvent = new Event('click');
+        shopElement.dispatchEvent(clickEvent);
+    } else {
+        sessionStorage.setItem('searchTerm', searchTerm);
+        window.location.href = "/first/firstFloor.html";
+    }
+    }else{
     // Ваш код для обработки поиска
     var searchTerm = document.getElementById('searchInput').value;
     console.log('Вы выполнили поиск по:', searchTerm);
+    // Найти магазин по введенному ID
+    var shopElement = document.getElementById(searchTerm);
+    if (shopElement !== null) {
+        // Если магазин найден, вызвать событие click на нем
+        var clickEvent = new Event('click');
+        shopElement.dispatchEvent(clickEvent);
+    } else {
+        sessionStorage.setItem('searchTerm', searchTerm);
+        window.location.href = "/first/firstFloor.html";
+    }
+
     // Дополнительная логика поиска может быть добавлена здесь
-}
+}}
 
 function toggleFilterContainer() {
     console.log('toggleFilterContainer called');
@@ -88,89 +136,92 @@ function applyFilters() {
     filterContainer.style.display = 'none';
 }
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
-    // Добавляем обработчики событий для каждого магазина
-    var shop1 = document.getElementById('shop1');
-    shop1.addEventListener('click', function () {
-        showShopInfo('Shop 1', '/img/Karmanobv.jpg', 'Description of Shop 1');
-    });
-    var shop2 = document.getElementById('shop2');
-    shop2.addEventListener('click', function () {
-        showShopInfo('Shop 2', '/img/Karmanobv.jpg', '«5 КармаNов» — это сеть розничных мультибрендовых магазинов джинсовой одежды на каждый день оригинального дизайна и высокого качества.');
-    });
-    var shop3 = document.getElementById('shop3');
-    shop3.addEventListener('click', function () {
-        showShopInfo('Shop 3', '/img/Karmanobv.jpg', 'Description of Shop 3');
-    });
-    var shop4 = document.getElementById('shop4');
-    shop4.addEventListener('click', function () {
-        showShopInfo('Shop 4', '/img/Karmanobv.jpg', 'Description of Shop 4');
-    });
-    var shop5 = document.getElementById('shop5');
-    shop5.addEventListener('click', function () {
-        showShopInfo('Shop 5', '/img/Karmanobv.jpg', 'Description of Shop 5');
-    });
-    var shop6 = document.getElementById('shop6');
-    shop6.addEventListener('click', function () {
-        showShopInfo('Shop 6', '/img/Karmanobv.jpg', 'Description of Shop 6');
-    });
-    var shop7 = document.getElementById('shop7');
-    shop7.addEventListener('click', function () {
-        showShopInfo('Shop 7', '/img/Karmanobv.jpg', 'Description of Shop 7');
-    });
-    var shop8 = document.getElementById('shop8');
-    shop8.addEventListener('click', function () {
-        showShopInfo('Shop 8', '/img/Karmanobv.jpg', 'Description of Shop 8');
-    });
-    var shop9 = document.getElementById('shop9');
-    shop9.addEventListener('click', function () {
-        showShopInfo('Shop 9', '/img/Karmanobv.jpg', 'Description of Shop 9');
-    });
-    var shop10 = document.getElementById('shop10');
-    shop10.addEventListener('click', function () {
-        showShopInfo('Shop 10', '/img/Karmanobv.jpg', 'Description of Shop 10');
-    });
-    var shop11 = document.getElementById('shop11');
-    shop11.addEventListener('click', function () {
-        showShopInfo('Shop 11', '/img/Karmanobv.jpg', 'Description of Shop 11');
-    });
-    var shop12 = document.getElementById('shop12');
-    shop12.addEventListener('click', function () {
-        showShopInfo('Shop 12', '/img/Karmanobv.jpg', 'Description of Shop 12');
-    });
-    var shop13 = document.getElementById('shop13');
-    shop13.addEventListener('click', function () {
-        showShopInfo('Shop 13', '/img/Karmanobv.jpg', 'Description of Shop 13');
-    });
-    var shop14 = document.getElementById('shop14');
-    shop14.addEventListener('click', function () {
-        showShopInfo('Shop 14', '/img/Karmanobv.jpg', 'Description of Shop 14');
-    });
-    var shop15 = document.getElementById('shop15');
-    shop15.addEventListener('click', function () {
-        showShopInfo('Shop 15', '/img/Karmanobv.jpg', 'Description of Shop 15');
-    });
-    var shop16 = document.getElementById('shop16');
-    shop16.addEventListener('click', function () {
-        showShopInfo('Shop 16', '/img/Karmanobv.jpg', 'Description of Shop 16');
-    });
-    var shop17 = document.getElementById('shop17');
-    shop17.addEventListener('click', function () {
-        showShopInfo('Shop 17', '/img/Karmanobv.jpg', 'Description of Shop 17');
-    });
+
+    
+    
     var shop18 = document.getElementById('shop18');
     shop18.addEventListener('click', function () {
-        showShopInfo('Shop 18', '/img/Karmanobv.jpg', 'Description of Shop 18');
+        showShopInfo('Shop 18', 'img/Karmanobv.jpg', 'Description of Shop 18');
     });
     var shop19 = document.getElementById('shop19');
     shop19.addEventListener('click', function () {
-        showShopInfo('Shop 19', '/img/Karmanobv.jpg', 'Description of Shop 19');
+        showShopInfo('Shop 19', '/img/Karmanobv.jpg', '«5 КармаNов» — это сеть розничных мультибрендовых магазинов джинсовой одежды на каждый день оригинального дизайна и высокого качества.');
     });
     var shop20 = document.getElementById('shop20');
     shop20.addEventListener('click', function () {
         showShopInfo('Shop 20', '/img/Karmanobv.jpg', 'Description of Shop 20');
     });
-
+    var shop21 = document.getElementById('shop21');
+    shop21.addEventListener('click', function () {
+        showShopInfo('Shop 21', '/img/Karmanobv.jpg', 'Description of Shop 21');
+    });
+    var shop22 = document.getElementById('shop22');
+    shop22.addEventListener('click', function () {
+        showShopInfo('Shop 22', '/img/Karmanobv.jpg', 'Description of Shop 22');
+    });
+    var shop23 = document.getElementById('shop23');
+    shop23.addEventListener('click', function () {
+        showShopInfo('Shop 23', '/img/Karmanobv.jpg', 'Description of Shop 23');
+    });
+    var shop24 = document.getElementById('shop24');
+    shop24.addEventListener('click', function () {
+        showShopInfo('Shop 24', '/img/Karmanobv.jpg', 'Description of Shop 24');
+    });
+    var shop25 = document.getElementById('shop25');
+    shop25.addEventListener('click', function () {
+        showShopInfo('Shop 25', '/img/Karmanobv.jpg', 'Description of Shop 25');
+    });
+    var shop26 = document.getElementById('shop26');
+    shop26.addEventListener('click', function () {
+        showShopInfo('Shop 26', '/img/Karmanobv.jpg', 'Description of Shop 26');
+    });
+    var shop27 = document.getElementById('shop27');
+    shop27.addEventListener('click', function () {
+        showShopInfo('Shop 27', '/img/Karmanobv.jpg', 'Description of Shop 27');
+    });
+    var shop28 = document.getElementById('shop28');
+    shop28.addEventListener('click', function () {
+        showShopInfo('Shop 28', '/img/Karmanobv.jpg', 'Description of Shop 28');
+    });
+    var shop29 = document.getElementById('shop29');
+    shop29.addEventListener('click', function () {
+        showShopInfo('Shop 29', '/img/Karmanobv.jpg', 'Description of Shop 29');
+    });
+    var shop30 = document.getElementById('shop30');
+    shop30.addEventListener('click', function () {
+        showShopInfo('Shop 30', '/img/Karmanobv.jpg', 'Description of Shop 30');
+    });
+    var shop31 = document.getElementById('shop31');
+    shop31.addEventListener('click', function () {
+        showShopInfo('Shop 31', '/img/Karmanobv.jpg', 'Description of Shop 31');
+    });
+    var shop32 = document.getElementById('shop32');
+    shop32.addEventListener('click', function () {
+        showShopInfo('Shop 32', '/img/Karmanobv.jpg', 'Description of Shop 32');
+    });
+    var shop33 = document.getElementById('shop33');
+    shop33.addEventListener('click', function () {
+        showShopInfo('Shop 33', '/img/Karmanobv.jpg', 'Description of Shop 33');
+    });
+    var shop34 = document.getElementById('shop34');
+    shop34.addEventListener('click', function () {
+        showShopInfo('Shop 34', '/img/Karmanobv.jpg', 'Description of Shop 34');
+    });
+    var shop35 = document.getElementById('shop35');
+    shop35.addEventListener('click', function () {
+        showShopInfo('Shop 35', '/img/Karmanobv.jpg', 'Description of Shop 35');
+    });
+    var shop36 = document.getElementById('shop36');
+    shop36.addEventListener('click', function () {
+        showShopInfo('Shop 36', '/img/Karmanobv.jpg', 'Description of Shop 36');
+    });
+    var shop37 = document.getElementById('shop37');
+    shop37.addEventListener('click', function () {
+        showShopInfo('Shop 37', '/img/Karmanobv.jpg', 'Description of Shop 37');
+    });
     // Закрытие модального окна при нажатии на кнопку "Закрыть"
     var closeButton = document.getElementById('shopPhoto');
     closeButton.addEventListener('click', function () {
