@@ -81,12 +81,14 @@ function performSearch() {
     // Найти магазин по введенному ID
     var shopElement = document.getElementById(searchTerm);
     if (shopElement !== null) {
+
         // Если магазин найден, вызвать событие click на нем
         var clickEvent = new Event('click');
         shopElement.dispatchEvent(clickEvent);
     } else {
         sessionStorage.setItem('searchTerm', searchTerm);
         window.location.href = "/first/firstFloor.html";
+
     }
 
     // Дополнительная логика поиска может быть добавлена здесь
