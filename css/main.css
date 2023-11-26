@@ -7,9 +7,9 @@ body {
 }
 
 #mapContainer {
-    position: relative;
-    width: 100vw; 
-    height: 100vh; 
+    
+   
+    
     overflow: hidden; 
 }
 
@@ -223,6 +223,7 @@ a button:hover {
 
 #ul1 li.path {
     background-color: green;
+    border-radius: 25px;
 }
 
 #ul1 li:not(.path) {
