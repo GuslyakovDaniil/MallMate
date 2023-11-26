@@ -52,7 +52,6 @@
     <body>
   <!-- Paste the map HTML code here -->
   <ul id="ul1"></ul>
-    <input id="btn" type="button" value="Начать поиск" onclick="startSearch()" />
     <script >
         var oUl = document.getElementById("ul1");
         var aLi = document.getElementsByTagName("li");
@@ -99,8 +98,9 @@
                 0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
             ]
 
-        function init() {
+            function init() {
             createMap();
+            startSearch();
         }
 
         function createMap() {

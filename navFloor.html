@@ -55,7 +55,6 @@
 </head>
 <body>
     <ul id="ul1"></ul>
-    <input id="btn" type="button" value="Начать поиск" onclick="startSearch()" />
     <script type="text/javascript">
         var oUl = document.getElementById("ul1");
         var aLi = document.getElementsByTagName("li");
@@ -104,6 +103,7 @@
 
         function init() {
             createMap();
+            startSearch();
         }
 
         function createMap() {
@@ -247,6 +247,7 @@ function startSearch() {
         }
 
         init();
+        
     </script>
 </body>
 </html>
