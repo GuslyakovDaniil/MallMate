@@ -6,7 +6,7 @@
     <style type="text/css">
         #ul1 {
             margin: 30px auto;
-            border: 1px solid black;
+            
             border-bottom: none;
             border-right: none;
             padding: 0;
@@ -39,6 +39,11 @@
         #ul1 li.path {
             background-color: green;
         }
+
+        #ul1 li:not(.path) {
+    visibility: hidden;
+    }
+
 
         #btn {
             position: absolute;

@@ -190,50 +190,55 @@ a button:hover {
     z-index: 2;
 }
 #ul1 {
-      margin: 30px auto;
-      border: 1px solid black;
-      border-bottom: none;
-      border-right: none;
-      padding: 0;
-      height: auto;
-      overflow: hidden;
-  }
+    margin: 30px auto;
+    
+    border-bottom: none;
+    border-right: none;
+    padding: 0;
+    height: auto;
+    overflow: hidden;
+}
 
-  #ul1 li {
-      list-style: none;
-      border: 1px solid black;
-      border-top: none;
-      border-left: none;
-      float: left;
-      width: 20px; /* Adjusted width to fit 40 elements in a row */
-      height: 20px; /* Adjusted height */
-  }
+#ul1 li {
+    list-style: none;
+    border: 0.1px solid black;
+    border-top: none;
+    border-left: none;
+    float: left;
+    width: 20px; /* Adjusted width to fit 40 elements in a row */
+    height: 20px; /* Adjusted height */
+}
 
-  #ul1 li.style1 {
-      background-color: red;
-  }
+#ul1 li.style1 {
+    background-color: red;
+}
 
-  #ul1 li.style2 {
-      background-color: rgb(135,149,158);
-  }
+#ul1 li.style2 {
+    background-color: rgb(135,149,158);
+}
 
-  #ul1 li.style3 {
-      background-color: orange;
-  }
+#ul1 li.style3 {
+    background-color: orange;
+}
 
-  #ul1 li.path {
-      background-color: green;
-  }
+#ul1 li.path {
+    background-color: green;
+}
 
-  #btn {
-      position: absolute;
-      left: 50%;
-      margin-left: -50px;
-  }
+#ul1 li:not(.path) {
+visibility: hidden;
+}
 
-  #btn:hover {
-      background-color: #E21918;
-      color: white;
-      border-radius: 4px;
-  }
+
+#btn {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+}
+
+#btn:hover {
+    background-color: #E21918;
+    color: white;
+    border-radius: 4px;
+}
   /* =============================================================== */
