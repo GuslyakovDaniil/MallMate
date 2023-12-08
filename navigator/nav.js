@@ -42,13 +42,36 @@ var oUl = document.getElementById("ul1");
                 0,0,0,0,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,0,0,0,2,0,2,0,2,0,0,2,
                 0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
             ]
+// Функция для установки точек А и Б
+function setPoints() {
+    var pointAId = document.getElementById('pointAInput').value;
+    var pointBId = document.getElementById('pointBInput').value;
+    updatePointA(pointAId);
+    updatePointB(pointBId);
+}
 
-            function init() {
-            createMap();
-            startSearch();
-        }
-        function createMap() {
+// Функция для инициализации карты и поиска маршрута
+function initMapAndSearch() {
+    setPoints(); // Установка точек А и Б
+    createMap(); // Создание карты
+    startSearch(); // Поиск маршрута
+}
+
+// Вызываем initMapAndSearch() после загрузки страницы
+document.addEventListener('DOMContentLoaded', function () {
+    initMapAndSearch();
+});
+
+// Добавляем обработчик события для кнопки "Найти маршрут"
+var findRouteButton = document.getElementById('findRouteButton');
+findRouteButton.addEventListener('click', function () {
+    setPoints(); // Установка точек А и Б перед каждым поиском маршрута
+    initMapAndSearch(); // Повторно инициализируем карту и ищем маршрут
+});
+
+function createMap() {
     var liSize = 15; //отдаление от экрана
+    oUl.innerHTML = ""; // Очистка содержимого oUl перед созданием новой карты
     for (var i = 0; i < map.length; i++) {
         var oLi = document.createElement("li");
         oLi.style.width = liSize + "px";
@@ -65,14 +88,20 @@ var oUl = document.getElementById("ul1");
     oUl.style.width = 40 * (liSize + 1) + 1 + "px";  // надо изменить на 40 чтобы маршрут строился на карте 40 на 40
 }
 
-
 function startSearch() {
     var startNode = findNode(1);
     var endNode = findNode(3);
 
     var path = findShortestPath(startNode, endNode);
-    markPath(path);
+
+    // Проверьте, что путь не пуст перед его пометкой
+    if (path.length > 0) {
+        markPath(path);
+    } else {
+        console.error("Допустимый путь не найден.");
+    }
 }
+
 
 
 function findNode(value) {
@@ -86,6 +115,11 @@ function findNode(value) {
 
 
         function findShortestPath(start, end) {
+            // Гарантируйте, что начальный и конечный узлы действительны
+    if (!start || !end) {
+        console.error("Недопустимый начальный или конечный узел.");
+        return [];
+    }
             var openSet = [start];
             var cameFrom = {};
             var gScore = {};
@@ -184,9 +218,17 @@ function findNode(value) {
         function markPath(path) {
             for (var i = 0; i < path.length; i++) {
                 var index = path[i].y * 40 + path[i].x;
-                aLi[index].classList.add("path");
+                var element = aLi[index];
+        
+                // Проверка, существует ли элемент и имеет ли свойство classList
+                if (element && element.classList) {
+                    element.classList.add("path");
+                } else {
+                    console.error("Ошибка при маркировке пути: элемент или classList не найдены");
+                }
             }
         }
+        
 
         init();
 
@@ -228,10 +270,12 @@ floorSvg.addEventListener('wheel', (e) => {
     floorSvg.style.transform = `translate(${currentTranslateX}px, ${currentTranslateY}px) scale(${currentScale})`;
 });
 // НАВИГАЦИЯ. точки для карты map=======================================================================================================================
+initMapAndSearch();
+
 // Для точки А
 function updatePointA(id) {
     if (id === "shop1") {
-        map[240] = 1;
+        map[1211] = 1;
     } else if (id === "shop2") {
         map[400] = 1;
     }
@@ -243,37 +287,30 @@ function updatePointB(id) {
     if (id === "shop1") {
         map[241] = 3; // Используйте другой индекс
     } else if (id === "shop2") {
-        map[401] = 3; // Используйте другой индекс
+        map[446] = 3; // Используйте другой индекс
     }
     // Другие условия для других точек Б, если необходимо
 }
-
-
 // Пример использования (вызов этих функций после ввода id в соответствующие поля):
-var pointAId = document.getElementById('pointAInput').value; // Получите значение из поля ввода для точки А
-var pointBId = document.getElementById('pointBInput').value; // Получите значение из поля ввода для точки Б
+var pointAId = document.getElementById('pointAInput').value;
+var pointBId = document.getElementById('pointBInput').value;
 
 updatePointA(pointAId);
 updatePointB(pointBId);
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Добавляем обработчик события для кнопки "Найти маршрут"
     var findRouteButton = document.getElementById('findRouteButton');
     findRouteButton.addEventListener('click', function () {
-        // Получите значения из полей ввода для точек А и Б
         var pointAId = document.getElementById('pointAInput').value;
         var pointBId = document.getElementById('pointBInput').value;
 
-        // Вызовите функции обновления точек А и Б
         updatePointA(pointAId);
         updatePointB(pointBId);
 
-        // Дополнительная логика, если необходимо
-
-        // Здесь можно добавить вызов функции для поиска маршрута, если нужно
-        // performSearch();
+        initMapAndSearch();
     });
 });
+
 // НАВИГАЦИЯ. точки для карты map======================================================================================================================
 function toggleFilterContainer() {
     console.log('toggleFilterContainer called');

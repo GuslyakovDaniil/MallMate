@@ -9,46 +9,42 @@
 </head>
 <body>
   <div id="searchContainer">
-    <button id="filterButton" onclick="toggleFilterContainer()">Фильтры</button>
-    <a href="/navigator/nav.html"><button>Навигатор</button></a>
-    <div id="searchContainer">
-        <div id="routeInputs">
-          <input type="text" id="pointAInput" placeholder="ID точки А" class="inputField">
-          <input type="text" id="pointBInput" placeholder="ID точки Б" class="inputField">
-          <button id="findRouteButton" class="findRouteButton">Найти маршрут</button>
-          <button id="filterButton" onclick="toggleFilterContainer()">Фильтры</button>          
-        </div>
-        <a href="/navigator/navSecondFloor.html"><button>Второй этаж</button></a>
+    <div id="routeInputs">
+        <input type="text" id="pointAInput" placeholder="ID точки А" class="inputField">
+        <input type="text" id="pointBInput" placeholder="ID точки Б" class="inputField">
+        <button id="findRouteButton" class="findRouteButton">Найти маршрут</button>
+        <button id="filterButton" onclick="toggleFilterContainer()">Фильтры</button>
     </div>
+    <a href="/navigator/navSecondFloor.html"><button>Второй этаж</button></a>
     <!-- Контейнер для фильтров -->
     <div id="filterContainer">
-      <!-- Добавьте здесь элементы для фильтров -->
-      <div class="filterSection">
-        <button class="filterDropdown" onclick="toggleDropdown('categoryDropdown')">Категория</button>
-        <div id="categoryDropdown" class="dropdownContent">
-          <!-- Здесь добавьте категории -->
-          <label for="category1" onclick="toggleSelection(this)">Категория 1</label>
-          <input type="checkbox" id="category1" style="display: none;">
-          <label for="category2" onclick="toggleSelection(this)">Категория 2</label>
-          <input type="checkbox" id="category2" style="display: none;">
+        <!-- Добавьте здесь элементы для фильтров -->
+        <div class="filterSection">
+            <button class="filterDropdown" onclick="toggleDropdown('categoryDropdown')">Категория</button>
+            <div id="categoryDropdown" class="dropdownContent">
+                <!-- Здесь добавьте категории -->
+                <label for="category1" onclick="toggleSelection(this)">Категория 1</label>
+                <input type="checkbox" id="category1" style="display: none;">
+                <label for="category2" onclick="toggleSelection(this)">Категория 2</label>
+                <input type="checkbox" id="category2" style="display: none;">
+            </div>
         </div>
-      </div>
-      <div class="filterSection">
-        <button class="filterDropdown" onclick="toggleDropdown('locationDropdown')">Местоположение</button>
-        <div id="locationDropdown" class="dropdownContent">
-          <!-- Здесь добавьте местоположения -->
-          <label for="location1" onclick="toggleSelection(this)">Местоположение 1</label>
-          <input type="checkbox" id="location1" style="display: none;">
-          
-          <label for="location2" onclick="toggleSelection(this)">Местоположение 2</label>
-          <input type="checkbox" id="location2" style="display: none;">
+        <div class="filterSection">
+            <button class="filterDropdown" onclick="toggleDropdown('locationDropdown')">Местоположение</button>
+            <div id="locationDropdown" class="dropdownContent">
+                <!-- Здесь добавьте местоположения -->
+                <label for="location1" onclick="toggleSelection(this)">Местоположение 1</label>
+                <input type="checkbox" id="location1" style="display: none;">
+                <label for="location2" onclick="toggleSelection(this)">Местоположение 2</label>
+                <input type="checkbox" id="location2" style="display: none;">
+            </div>
         </div>
-      </div>
-      <div id="buttionConfirm">
-      <button onclick="applyFilters()">Применить</button>
-      </div>
+        <div id="buttionConfirm">
+            <button onclick="applyFilters()">Применить</button>
+        </div>
     </div>
-  </div>
+</div>
+
   <div id="shopInfoModal" style="display: none;">
     <img id="shopPhoto" src="" alt="Shop Photo">
     <p id="shopDescription">Shop Description</p>
@@ -17833,6 +17829,5 @@
 </g>
 </svg>
 </div>
-   
 </body>
 </html>
