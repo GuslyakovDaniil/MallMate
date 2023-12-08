@@ -146,83 +146,83 @@ document.addEventListener('DOMContentLoaded', function () {
     
     var shop18 = document.getElementById('shop18');
     shop18.addEventListener('click', function () {
-        showShopInfo('Shop 18', 'img/Karmanobv.jpg', 'Description of Shop 18');
+        showShopInfo('Shop 18', '/img/maag.png', 'MAAG – новый концептуальный бренд для женщин, мужчин и детей, меняющий подход к выбору одежды и объединяющий последние модные тенденции и стиль, неподвластный времени.');
     });
     var shop19 = document.getElementById('shop19');
     shop19.addEventListener('click', function () {
-        showShopInfo('Shop 19', '/img/Karmanobv.jpg', '«5 КармаNов» — это сеть розничных мультибрендовых магазинов джинсовой одежды на каждый день оригинального дизайна и высокого качества.');
+        showShopInfo('Shop 19', '/img/loverepublic.png', 'LOVE REPUBLIC – женский lifestyle бренд одежды и аксессуаров middle-сегмента. Девушка LOVE REPUBLIC уверена в себе и амбициозна.Она умеет наслаждаться каждым моментом и знает, что такое истинный гедонизм.Образы, которые она выбирает, помогают раскрыть её внутреннюю энергию, природную чувственность и сексуальность.');
     });
     var shop20 = document.getElementById('shop20');
     shop20.addEventListener('click', function () {
-        showShopInfo('Shop 20', '/img/Karmanobv.jpg', 'Description of Shop 20');
+        showShopInfo('Shop 20', '/img/magicbox.png', 'Magic Box — это сеть торговых точек упаковки подарков.Благодаря хорошо подобранному ассортименту наши сотрудницы могут упаковать любой подарок или подобрать подарочную коробку.А мягкие игрушки и шарики не оставят равнодушным ни одного ребенка.');
     });
     var shop21 = document.getElementById('shop21');
     shop21.addEventListener('click', function () {
-        showShopInfo('Shop 21', '/img/Karmanobv.jpg', 'Description of Shop 21');
+        showShopInfo('Shop 21', '/img/notherbear.png', 'Motherbear - магазин товаров для будущих мам, одежду и обувь для детей с рождения и до 10 лет, товары для кормления и купания малыша, все для детской комнаты и товары для путешествий.');
     });
     var shop22 = document.getElementById('shop22');
     shop22.addEventListener('click', function () {
-        showShopInfo('Shop 22', '/img/Karmanobv.jpg', 'Description of Shop 22');
+        showShopInfo('Shop 22', '/img/network.png', 'NetWork – Бренд одежды, сочетающей в себе культовый дизайн, гламурную эстетику, строгую элегантность и спортивный шик для мужчин и женщин, которые ценят качество и стиль.');
     });
     var shop23 = document.getElementById('shop23');
     shop23.addEventListener('click', function () {
-        showShopInfo('Shop 23', '/img/Karmanobv.jpg', 'Description of Shop 23');
+        showShopInfo('Shop 23', '/img/newyorker.png', 'Магазин молодежной одежды в стиле жителей Нью-Йорка: джинсы, спортивная одежда — уличая мода, дополненная широким спектром аксессуаров и нижнего белья.');
     });
     var shop24 = document.getElementById('shop24');
     shop24.addEventListener('click', function () {
-        showShopInfo('Shop 24', '/img/Karmanobv.jpg', 'Description of Shop 24');
+        showShopInfo('Shop 24', '/img/ostin.png', 'O’STIN — международный бренд предлагает качественную одежду и аксессуары в стиле casual, включая женский, мужской и детский ассортимент. Ключевую часть коллекции составляет O’STIN Casual — базовый ассортимент на каждый день: стильная, удобная и практичная одежда. Кроме того, есть премиальное направление, а также джинсовая, молодежная и детская линии одежды.');
     });
     var shop25 = document.getElementById('shop25');
     shop25.addEventListener('click', function () {
-        showShopInfo('Shop 25', '/img/Karmanobv.jpg', 'Description of Shop 25');
+        showShopInfo('Shop 25', '/img/oodji.png', 'Ассортимент магазина представлен женской и мужской коллекциями одежды. Линия Ultra создана для молодых, активных девушек и юношей, а линия Collection понравится покупателям, которые ценят элегантность и эстетику.');
     });
     var shop26 = document.getElementById('shop26');
     shop26.addEventListener('click', function () {
-        showShopInfo('Shop 26', '/img/Karmanobv.jpg', 'Description of Shop 26');
+        showShopInfo('Shop 26', '/img/re.png', 'RE – это модная одежда, которая отвечает последним модным тенденциям. Базовые и капсульные коллекции, актуальные цвета, а также большой выбор комфортных повседневных образов. Одежда, обувь и аксессуары RE — это отличное качество по доступным ценам.');
     });
     var shop27 = document.getElementById('shop27');
     shop27.addEventListener('click', function () {
-        showShopInfo('Shop 27', '/img/Karmanobv.jpg', 'Description of Shop 27');
+        showShopInfo('Shop 27', '/img/restore.png', 'Restore: – это территория инноваций и технических чудес для тех, кто ценит комфорт. Из ассортимента самых востребованных мировых брендов restore: тщательно отбирает лучшие модели и исключительные продукты. В магазине представлены товары Apple, Dyson, Bang & Olufsen, Marshall, JBL и многие другие.Преимущества магазина restore: оригинальная продукция, гарантия и надежность, профессиональная консультация при выборе устройств, высокий уровень постпродажного сопровождения');
     });
     var shop28 = document.getElementById('shop28');
     shop28.addEventListener('click', function () {
-        showShopInfo('Shop 28', '/img/Karmanobv.jpg', 'Description of Shop 28');
+        showShopInfo('Shop 28', '/img/sokolov.png', 'SOKOLOV — бренд ювелирных украшений и часов, основанный в 1993 году и на сегодняшний день являющийся одним из самых желанных в России. Известен не только в нашей стране, но и далеко за ее пределами, представлен в десятках стран мира на трех континентах. В центре внимания бренда — совершенство его произведений, принципы высочайшего качества, актуальный дизайн и внимание к каждой детали.');
     });
     var shop29 = document.getElementById('shop29');
     shop29.addEventListener('click', function () {
-        showShopInfo('Shop 29', '/img/Karmanobv.jpg', 'Description of Shop 29');
+        showShopInfo('Shop 29', '/img/polo.png', 'AR Fashion – официальный дистрибьютор продукции бренда U.S. Polo Assn. в России. Изделия U.S.Polo Assn. – это прежде всего высокое качество и статус.Являясь воплощением комфорта, красоты и свободы, одежда U.S.Polo Assn.одинаково хорошо смотрится как в офисе, так и в неформальной обстановке или на отдыхе.Бренд U.S.Polo Assn.воплощен в мужской, женской и детской коллекциях одежды, обуви и аксессуаров.');
     });
     var shop30 = document.getElementById('shop30');
     shop30.addEventListener('click', function () {
-        showShopInfo('Shop 30', '/img/Karmanobv.jpg', 'Description of Shop 30');
+        showShopInfo('Shop 30', '/img/xiaomi.png', 'Xiaomi — один из ведущих брендов электроники, известный во всем мире. В ассортименте фирменного магазина есть все — от смартфонов и аксессуаров до бытовой техники «Умный дом, ТВ и средств передвижения (самокатов и т.п.). Философия бренда заключается в том, чтобы сделать доступными для всех самые последние технологические достижения.Xiaomi — инновации для каждого');
     });
     var shop31 = document.getElementById('shop31');
     shop31.addEventListener('click', function () {
-        showShopInfo('Shop 31', '/img/Karmanobv.jpg', 'Description of Shop 31');
+        showShopInfo('Shop 31', '/img/zolo.png', 'Zolla — бренд модной демократичной одежды, где каждый сможет найти для себя образы, которые отражают его настроение и внутренний мир. Zolla — для уютных посиделок с друзьями и для безумных праздничных вечеринок, для летних прогулок по парку и для веселья на зимнем катке, для романтического свидания и для вечера с любимой книгой. Zolla стремится сделать моду доступной. Разрабатывая коллекции, дизайнеры zolla адаптируют последние мировые тренды, помогая клиентам найти и выработать свой собственный стиль.');
     });
     var shop32 = document.getElementById('shop32');
     shop32.addEventListener('click', function () {
-        showShopInfo('Shop 32', '/img/Karmanobv.jpg', 'Description of Shop 32');
+        showShopInfo('Shop 32', '/img/детскиймир.png', 'Современный супермаркет включает около 20–30 тысяч наименований товаров детского ассортимента: игрушки, одежда и обувь, товары для новорожденных, канцелярские товары, наборы для творчества, товары для активного отдыха, автокресла, мебель. Магазин работает в среднем ценовом сегменте.');
     });
     var shop33 = document.getElementById('shop33');
     shop33.addEventListener('click', function () {
-        showShopInfo('Shop 33', '/img/Karmanobv.jpg', 'Description of Shop 33');
+        showShopInfo('Shop 33', '/img/золотоеяблоко.png', 'Парфюмерный супермаркет «Золотое Яблоко» – это огромный магазин косметики и парфюмерии с широким ассортиментом брендов сегмента масс-маркет, люкс, профессиональной косметики для волос, аптечных брендов и БАДов, азиатской и органической косметики.');
     });
     var shop34 = document.getElementById('shop34');
     shop34.addEventListener('click', function () {
-        showShopInfo('Shop 34', '/img/Karmanobv.jpg', 'Description of Shop 34');
+        showShopInfo('Shop 34', '/img/летуаль.png', 'ЛЭтуаль – модная территория красоты для стильных и современных!Более 20 лет сеть магазинов ЛЭтуаль – лидер на российском косметическом рынке. Почти 1000 магазинов ЛЭтуаль по всей России обеспечивают высокий уровень сервиса и создают условия для комфортного бьюти - шопинга. Ежедневно клиентов встречают профессиональные консультанты, которые проходят обучение на международных тренингах, и помогают сделать выбор среди великолепного ассортимента сети магазинов ЛЭтуаль. Ароматы для мужчин и женщин, средства по уходу за кожей и волосами, декоративная косметика от мировых брендов, а так же коллекция собственной торговой марки - всё лучшее из мира красоты только в ЛЭтуаль!');
     });
     var shop35 = document.getElementById('shop35');
     shop35.addEventListener('click', function () {
-        showShopInfo('Shop 35', '/img/Karmanobv.jpg', 'Description of Shop 35');
+        showShopInfo('Shop 35', '/img/мвидио.png', '«М.Видео» — лидер среди розничных сетей по продаже электроники и бытовой техники в России и одна из крупнейших европейских компаний в этом сегменте. Товарный ассортимент магазинов «М.Видео» превышает 20 тысяч наименований техники: аудио/видео и цифрового направлений, мелкой и крупной бытовой электроники, товаров для развлечения и аксессуаров. Компания предлагает клиентам высококлассную сервисную поддержку под брендом «М.Сервис».');
     });
     var shop36 = document.getElementById('shop36');
     shop36.addEventListener('click', function () {
-        showShopInfo('Shop 36', '/img/Karmanobv.jpg', 'Description of Shop 36');
+        showShopInfo('Shop 36', '/img/мегафон.png', 'Салон крупнейшего оператора связи «МегаФон» оказывает следующие услуги: заключение и переоформление договоров, работа с ошибочными платежами, предоставление счета, счета-фактуры, акта, детализации счета, управление тарифным планом (подключение и отключение опций), блокировка номера, денежный перевод, прием претензий, восстановление номера');
     });
     var shop37 = document.getElementById('shop37');
     shop37.addEventListener('click', function () {
-        showShopInfo('Shop 37', '/img/Karmanobv.jpg', 'Description of Shop 37');
+        showShopInfo('Shop 37', '/img/мтс.png', 'МТС является одним из ведущих сотовых операторов в России и странах СНГ. Компания оказывает услуги связи, передачи данных и доступа в интернет, предлагает новые тарифные планы и инновационные сервисы для широкого круга частных и корпоративных абонентов.');
     });
     // Закрытие модального окна при нажатии на кнопку "Закрыть"
     var closeButton = document.getElementById('shopPhoto');
