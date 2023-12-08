@@ -205,12 +205,11 @@ width: 100%; /* Растягиваем кнопку на всю ширину р�
     width: 48%;
     height: 48%;
     pointer-events: none;
-    transform: translate(57%, 12%);
+    transform: translate(64%, 17%);
     z-index: 2;
 }
 #ul1 {
-    margin: 30px auto;
-    
+
     border-bottom: none;
     border-right: none;
     padding: 0;
@@ -224,8 +223,6 @@ width: 100%; /* Растягиваем кнопку на всю ширину р�
     border-top: none;
     border-left: none;
     float: left;
-    width: 20px; /* Adjusted width to fit 40 elements in a row */
-    height: 20px; /* Adjusted height */
 }
 
 #ul1 li.style1 {
@@ -242,11 +239,10 @@ width: 100%; /* Растягиваем кнопку на всю ширину р�
 
 #ul1 li.path {
     background-color: green;
-    border-radius: 25px;
 }
 
 #ul1 li:not(.path) {
-visibility: hidden;
+/* visibility: hidden; */
 }
 
 
