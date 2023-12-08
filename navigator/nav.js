@@ -1,6 +1,6 @@
 var oUl = document.getElementById("ul1");
         var aLi = document.getElementsByTagName("li");
-        var map = [
+var initialMap = [
                 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
                 2,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,2,
                 2,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,2,
@@ -42,14 +42,24 @@ var oUl = document.getElementById("ul1");
                 0,0,0,0,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,0,0,0,2,0,2,0,2,0,0,2,
                 0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
             ]
+// Создаем копию исходной карты для работы с ней
+var map = Array.from(initialMap);
 // Функция для установки точек А и Б
 function setPoints() {
+    // Сброс карты к исходному состоянию
+    resetMap();
+  
+    // Обновление точек А и Б на основе ввода пользователя
     var pointAId = document.getElementById('pointAInput').value;
     var pointBId = document.getElementById('pointBInput').value;
     updatePointA(pointAId);
     updatePointB(pointBId);
-}
-
+  }
+  function resetMap() {
+    // Копируем исходную карту обратно в рабочую карту
+    map = Array.from(initialMap);
+  }
+  
 // Функция для инициализации карты и поиска маршрута
 function initMapAndSearch() {
     setPoints(); // Установка точек А и Б
@@ -65,8 +75,9 @@ document.addEventListener('DOMContentLoaded', function () {
 // Добавляем обработчик события для кнопки "Найти маршрут"
 var findRouteButton = document.getElementById('findRouteButton');
 findRouteButton.addEventListener('click', function () {
-    setPoints(); // Установка точек А и Б перед каждым поиском маршрута
-    initMapAndSearch(); // Повторно инициализируем карту и ищем маршрут
+  // Установка точек и поиск маршрута с использованием обновленной карты
+  setPoints();
+  initMapAndSearch();
 });
 
 function createMap() {
@@ -293,10 +304,9 @@ function updatePointB(id) {
 }
 // Пример использования (вызов этих функций после ввода id в соответствующие поля):
 var pointAId = document.getElementById('pointAInput').value;
-var pointBId = document.getElementById('pointBInput').value;
-
-updatePointA(pointAId);
-updatePointB(pointBId);
+  var pointBId = document.getElementById('pointBInput').value;
+  updatePointA(pointAId);
+  updatePointB(pointBId);
 
 document.addEventListener('DOMContentLoaded', function () {
     var findRouteButton = document.getElementById('findRouteButton');
@@ -310,7 +320,6 @@ document.addEventListener('DOMContentLoaded', function () {
         initMapAndSearch();
     });
 });
-
 // НАВИГАЦИЯ. точки для карты map======================================================================================================================
 function toggleFilterContainer() {
     console.log('toggleFilterContainer called');
