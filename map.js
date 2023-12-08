@@ -47,9 +47,6 @@ var oUl = document.getElementById("ul1");
             createMap();
             startSearch();
         }
-
-        map[420] = 1;
-        map[450] = 3;
         function createMap() {
     var liSize = 15; //отдаление от экрана
     for (var i = 0; i < map.length; i++) {
