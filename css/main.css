@@ -1,5 +1,5 @@
 body {
-    background-image: url('/img/fon1.png');
+    background-image: url('/img/gradient.jpg');
     background-size: cover;
     background-repeat: repeat;
     margin: 0;
@@ -18,6 +18,7 @@ body {
 #floorSvg.grabbing {
     cursor: grabbing;
 }
+
 
 #searchContainer {
     position: fixed;
@@ -91,7 +92,7 @@ a button:hover {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 38%;
     background-color: #575757;
     padding: 10px;
     border-radius: 8px;
@@ -142,13 +143,35 @@ a button:hover {
 }
 
 #shopInfoModal {
-    position: absolute;
-    top: 40%;
-    left: 10%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    background-color: #f9f9f9;
+position: absolute;
+top: 40%;
+left: 10%;
+transform: translate(-50%, -50%);
+z-index: 2;
+background-color: #f9f9f9;
+border-radius: 15px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+padding: 20px;
+font-family: 'YourChosenFont', sans-serif;
 }
+
+#shopInfoModal p {
+font-size: 16px;
+color: #333;
+width: 100%; /* Растягиваем текст на всю ширину родительского элемента */
+}
+
+#shopInfoModal button {
+background-color: #3498db;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+width: 100%; /* Растягиваем кнопку на всю ширину родительского элемента */
+}
+
+
 
 /* Responsive Design Adjustments */
 @media (max-width: 768px) {
@@ -223,7 +246,7 @@ a button:hover {
 }
 
 #ul1 li:not(.path) {
-/* visibility: hidden; */
+visibility: hidden;
 }
 
 
@@ -238,4 +261,49 @@ a button:hover {
     color: white;
     border-radius: 4px;
 }
-  /* =============================================================== */
+
+#routeInputs {
+display: flex;
+align-items: center;
+}
+
+.inputField {
+margin-right: 5px;
+padding: 8px;
+border: 1px solid #000000;
+border-radius: 4px;
+font-size: 14px;
+}
+
+.findRouteButton {
+padding: 10px 16px;
+background-color: rgb(31, 212, 170);
+color: #9c1e1e;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+font-size: 14px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.findRouteButton:hover {
+background-color: #0056b3;
+}
+#buttionConfirm button {
+        background-color: #4CAF50; /* Зеленый цвет */
+        color: white; /* Белый текст */
+        padding: 10px 20px; /* Отступы вокруг текста */
+        border: none; /* Убираем границу */
+        text-align: center; /* Выравнивание текста по центру */
+        text-decoration: none; /* Убираем подчеркивание текста */
+        display: inline-block; /* Отображаем как блочный элемент */
+        font-size: 16px; /* Размер текста */
+        cursor: pointer; /* Курсор при наведении на кнопку */
+        border-radius: 10px; /* Закругление углов */
+    }
+
+    /* Стили для закругленной кнопки */
+    #buttionConfirm button.rounded {
+        border-radius: 50%; /* Закругление углов до половины размера кнопки */
+    }
+/* =============================================================== */

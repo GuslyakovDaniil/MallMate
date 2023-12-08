@@ -222,4 +222,4 @@ function formatDescription(description) {
     formattedDescription += currentLine;
 
     return formattedDescription;
-}
+}   
