@@ -269,103 +269,107 @@ initMapAndSearch();
 
 // Для точки А
 function updatePointA(id) {
-    if (id === "Главный вход") {
-        map[377] = 1;
-    } else if (id === "DNS") {
-        map[506] = 1;
-    } else if (id === "5 карманов") {
-        map[679] = 1;
-    } else if (id === "Adidas") {
-        map[687] = 1;
-    } else if (id === "AMAZING RED") {
-        map[691] = 1;
-    } else if (id === "askona") {
-        map[697] = 1;
-    } else if (id === "befree") {
-        map[705] = 1;
-    } else if (id === "BORK") {
-        map[1551] = 1;
-    } else if (id === "CASIO") {
-        map[1555] = 1;
-    } else if (id === "Acoola") {
-        map[1559] = 1;
-    } else if (id === "DUB") {
-        map[1563] = 1;
-    } else if (id === "Gloria Jeans") {
-        map[1569] = 1;
-    } else if (id === "familia") {
-        map[1237] = 1;
-    } else if (id === "Haier") {
+    if (id === "Restore") {
+        map[624] = 1;
+    } else if (id === "Loverepublic") {
+        map[493] = 1;
+    } else if (id === "Magic Box") {
+        map[497] = 1;
+    } else if (id === "Motherbear") {
+        map[510] = 1;
+    } else if (id === "NetWork") {
+        map[523] = 1;
+    } else if (id === "New Yorker") {
+        map[1019] = 1;
+    } else if (id === "O’STIN") {
+        map[731] = 1;
+    } else if (id === "Детский мир") {
+        map[690] = 1;
+    } else if (id === "RE") {
+        map[696] = 1;
+    } else if (id === "MAAG") {
+        map[700] = 1;
+    } else if (id === "SOKOLOV") {
+        map[706] = 1;
+    } else if (id === "Polo") {
+        map[1600] = 1;
+    } else if (id === "Xiaomi") {
+        map[1604] = 1;
+    } else if (id === "Zolla") {
+        map[1608] = 1;
+    } else if (id === "oodji") {
+        map[1612] = 1;
+    } else if (id === "Мегафон") {
+        map[1617] = 1;
+    } else if (id === "Лэтуаль") {
         map[1740] = 1;
-    } else if (id === "GUESS") {
-        map[1745] = 1;
-    } else if (id === "Hoff") {
-        map[1753] = 1;
-    } else if (id === "JNS") {
-        map[1769] = 1;
-    }else if (id === "Kari") {
-        map[1865] = 1;
-    }else if (id === "Эскалатор (1 Этаж)") {
-        map[1050] = 1;
-    }else if (id === "Лестница (у входа)") {
-        map[132] = 1;
-    }else if (id === "Лестница") {
-        map[1868] = 1;
-    }else if (id === "Туалет (у входа)") {
-        map[321] = 1;
-    }else if (id === "Туалет") {
-        map[1163] = 1;
+    }else if (id === "М.Видео") {
+        map[1746] = 1;
+    }else if (id === "Золотое яблоко") {
+        map[1756] = 1;
+    }else if (id === "МТС") {
+        map[1866] = 1;
+    }else if (id === "Эскалатор (2 Этаж)") {
+        map[858] = 1;
+    }else if (id === "Лестница (2 Этаж)") {
+        map[517] = 1;
+    }else if (id === "Лестница2 (2 Этаж)") {
+        map[1870] = 1;
+    }else if (id === "Туалет (2 Этаж)") {
+        map[1164] = 1;
     }
 }
 
 // Для точки Б
 function updatePointB(id) {
-    if (id === "Главный вход") {
-        map[377] = 3;
-    } else if (id === "DNS") {
-        map[506] = 3;
-    } else if (id === "5 карманов") {
-        map[679] = 3;
-    } else if (id === "Adidas") {
-        map[687] = 3;
-    } else if (id === "AMAZING RED") {
-        map[691] = 3;
-    } else if (id === "askona") {
-        map[697] = 3;
-    } else if (id === "befree") {
-        map[705] = 3;
-    } else if (id === "BORK") {
-        map[1551] = 3;
-    } else if (id === "CASIO") {
-        map[1555] = 3;
-    } else if (id === "Acoola") {
-        map[1559] = 3;
-    } else if (id === "DUB") {
-        map[1563] = 3;
-    } else if (id === "Gloria Jeans") {
-        map[1569] = 3;
-    } else if (id === "familia") {
-        map[1237] = 3;
-    } else if (id === "Haier") {
+    if (id === "Restore") {
+        map[624] = 3;
+    } else if (id === "Loverepublic") {
+        map[493] = 3;
+    } else if (id === "Magic Box") {
+        map[497] = 3;
+    } else if (id === "Motherbear") {
+        map[510] = 3;
+    } else if (id === "NetWork") {
+        map[523] = 3;
+    } else if (id === "New Yorker") {
+        map[1019] = 3;
+    } else if (id === "O’STIN") {
+        map[731] = 3;
+    } else if (id === "Детский мир") {
+        map[690] = 3;
+    } else if (id === "RE") {
+        map[696] = 3;
+    } else if (id === "MAAG") {
+        map[700] = 3;
+    } else if (id === "SOKOLOV") {
+        map[706] = 3;
+    } else if (id === "Polo") {
+        map[1600] = 3;
+    } else if (id === "Xiaomi") {
+        map[1604] = 3;
+    } else if (id === "Zolla") {
+        map[1608] = 3;
+    } else if (id === "oodji") {
+        map[1612] = 3;
+    } else if (id === "Мегафон") {
+        map[1617] = 3;
+    } else if (id === "Лэтуаль") {
         map[1740] = 3;
-    } else if (id === "GUESS") {
-        map[1745] = 3;
-    } else if (id === "Hoff") {
-        map[1753] = 3;
-    } else if (id === "JNS") {
-        map[1769] = 3;
-    }else if (id === "Kari") {
-        map[1865] = 3;
-    }else if (id === "Эскалатор (1 Этаж)") {
-        map[1050] = 3;
-    }else if (id === "Лестница (у входа)") {
-        map[132] = 3;
-    }else if (id === "Лестница") {
-        map[1868] = 3;
-    }else if (id === "Туалет (у входа)") {
-        map[321] = 3;
-    }else if (id === "Туалет") {
-        map[1163] = 3;
+    }else if (id === "М.Видео") {
+        map[1746] = 3;
+    }else if (id === "Золотое яблоко") {
+        map[1756] = 3;
+    }else if (id === "МТС") {
+        map[1866] = 3;
+    }else if (id === "Эскалатор (2 Этаж)") {
+        map[858] = 3;
+    }else if (id === "Лестница (2 Этаж)") {
+        map[517] = 3;
+    }else if (id === "Лестница2 (2 Этаж)") {
+        map[1870] = 3;
+    }else if (id === "Туалет (2 Этаж)") {
+        map[1164] = 3;
     }
 }
 // Пример использования (вызов этих функций после ввода id в соответствующие поля):
