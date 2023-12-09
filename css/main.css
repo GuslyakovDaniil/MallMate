@@ -243,7 +243,7 @@ width: 100%; /* Растягиваем кнопку на всю ширину р�
 }
 
 #ul1 li:not(.path) {
-/* visibility: hidden; */
+visibility: hidden;
 }
 
 
