@@ -7,16 +7,52 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="icon" href="/img/snapedit_1700413447736.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-  <div id="searchContainer">
-    <input type="text" id="searchInput" placeholder="Поиск">
-    <button id="searchButton" onclick="performSearch()">Искать</button>
-    <button id="filterButton" onclick="toggleFilterContainer()">Фильтры</button>
-    <a href="/navigator/navFirstFloor.html"><button>Навигатор</button></a>
-    <a href="/second/secondFloor.html"><button>Второй этаж</button></a>
-    <!-- Контейнер для фильтров -->
+    <style>
+      #shopListContainer {
+      position: absolute;
+      bottom: -75px; /* Сдвиг вниз на 75 пикселей */
+      max-height: 200px; /* Максимальная высота списка */
+      overflow-y: auto; /* Добавляем полосу прокрутки, если список не помещается */
+      margin-top: 10px;
+      border: none;
+      padding: 10px;
+      background-color: transparent; /* Изначально прозрачный фон */
+      border-radius: 8px; /* Закругление рамки */
+      transition: background-color 0.3s ease; /* Анимация изменения фона */
+  }
+  
+  #shopListContainer.active {
+      background-color: #f4f4f4; /* Серый фон при активации */
+  }
+  
+  #shopListContainer ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+  }
+  
+  #shopListContainer li {
+      margin-bottom: 5px;
+      cursor: pointer;
+      padding: 5px;
+      background-color: #f4f4f4;
+  }
+  
+  
+  
+      </style>
+  </head>
+  
+  <body>
+      <div id="searchContainer">
+          <input type="text" id="searchInput" placeholder="Поиск" oninput="updateShopList()">
+          <button id="searchButton" onclick="performSearch()">Искать</button>
+          <div id="shopListContainer"></div>
+  
+          <button id="filterButton" onclick="toggleFilterContainer()">Фильтры</button>
+          <a href="/navigator/navFirstFloor.html"><button>Навигатор</button></a>
+          <a href="/second/secondFloor.html"><button>Второй этаж</button></a>
+          <!-- Контейнер для фильтров -->
     <div id="filterContainer">
       <!-- Добавьте здесь элементы для фильтров -->
       <div class="filterSection">
