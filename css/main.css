@@ -239,6 +239,7 @@ width: 100%; /* Растягиваем кнопку на всю ширину р�
 
 #ul1 li.path {
     background-color: green;
+    border-radius: 8px;
 }
 
 #ul1 li:not(.path) {
