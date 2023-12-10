@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const categoryDropdown = document.getElementById('categoryDropdown');
 
     function fetchResultsFromServer(searchTerm) {
-        const selectedCategory = categoryDropdown.value;
+        const selectedCategories = Array.from(categoryDropdown.selectedOptions).map(option => option.value);
 
-        fetch(`/api/search?term=${searchTerm}&category=${selectedCategory}`)
+        fetch(`/api/search?term=${searchTerm}&categories=${selectedCategories.join(',')}`)
             .then(response => response.json())
             .then(data => displayShopList(data))
             .catch(error => console.error('Error fetching data:', error));
@@ -64,15 +64,18 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => updateCategoryDropdown(data))
         .catch(error => console.error('Error fetching categories:', error));
+
+    function updateCategoryDropdown(categories) {
+        const categoryDropdown = document.getElementById('categoryDropdown');
+
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category;
+            option.textContent = category;
+            categoryDropdown.appendChild(option);
+        });
+
+        // Initialize Select2 for the multi-select dropdown
+        $(categoryDropdown).select2();
+    }
 });
-
-function updateCategoryDropdown(categories) {
-    const categoryDropdown = document.getElementById('categoryDropdown');
-
-    categories.forEach(category => {
-        const option = document.createElement('option');
-        option.value = category;
-        option.textContent = category;
-        categoryDropdown.appendChild(option);
-    });
-}

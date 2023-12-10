@@ -23,16 +23,16 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 // Обработчик для поиска магазинов
 app.get('/api/search', async (req, res) => {
     const searchTerm = req.query.term.toLowerCase();
-    const category = req.query.category;
+    const categories = req.query.categories ? req.query.categories.split(',') : [];
 
     try {
         let query = 'SELECT * FROM shops WHERE LOWER(name) LIKE $1';
-        const params = [`%${searchTerm}%`];
 
-        if (category) {
-            query += ' AND LOWER(category) = $2';
-            params.push(category.toLowerCase());
+        if (categories.length > 0) {
+            query += ` AND LOWER(category) IN (${categories.map((_, index) => `$${index + 2}`).join(',')})`;
         }
+
+        const params = [`%${searchTerm}%`, ...categories.map(category => category.toLowerCase())];
 
         const result = await pool.query(query, params);
         res.json(result.rows);
