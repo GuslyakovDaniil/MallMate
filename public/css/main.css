@@ -1,5 +1,5 @@
 body {
-    background-image: url('/img/gradient.jpg');
+    background-image: url('img/gradient.jpg');
     background-size: cover;
     background-repeat: repeat;
     margin: 0;
@@ -89,14 +89,15 @@ a button:hover {
 }
 
 #filterContainer {
-    display: none;
-    position: absolute;
-    top: 100%;
+    /* display: none; */ /* Remove display: none to make the dropdown always visible */
+    position: fixed;
+    top: 7%; /* Adjust the top position based on your layout */
     left: 38%;
     background-color: #575757;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 3; /* Increase the z-index to ensure it's above other elements */
 }
 
 .filterSection {
@@ -119,7 +120,7 @@ a button:hover {
 }
 
 .dropdownContent {
-    display: none;
+    /* display: none; */ /* Remove display: none to make the dropdown always visible */
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
