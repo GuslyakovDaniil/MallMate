@@ -3,51 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2 Этаж</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <title>1 Этаж</title>
+    <link rel="stylesheet" href="public/css/main.css">
     <link rel="icon" href="/img/snapedit_1700413447736.png" type="image/png">
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<div id="floorContainer">
-  <a href="/navigator/navSecondFloor.html"><button>Навигатор</button></a>
-  <a href="/first/firstFloor.html"><button>Первый этаж</button></a>
-</div>
-  <div id="searchContainer">
-    <input type="text" id="searchInput" placeholder="Поиск">
-    <button id="searchButton" onclick="performSearch()">Искать</button>
-    <button id="filterButton" onclick="toggleFilterContainer()">Фильтры</button>
-    <!-- Контейнер для фильтров -->
-    <div id="filterContainer">
-      <!-- Добавьте здесь элементы для фильтров -->
-      <div class="filterSection">
-        <button class="filterDropdown" onclick="toggleDropdown('categoryDropdown')">Категория</button>
-        <div id="categoryDropdown" class="dropdownContent">
-          <!-- Здесь добавьте категории -->
-          <label for="category1" onclick="toggleSelection(this)">Категория 1</label>
-          <input type="checkbox" id="category1" style="display: none;">
-          
-          <label for="category2" onclick="toggleSelection(this)">Категория 2</label>
-          <input type="checkbox" id="category2" style="display: none;">
-        </div>
-      </div>
-      <div class="filterSection">
-        <button class="filterDropdown" onclick="toggleDropdown('locationDropdown')">Местоположение</button>
-        <div id="locationDropdown" class="dropdownContent">
-          <!-- Здесь добавьте местоположения -->
-          <label for="location1" onclick="toggleSelection(this)">Местоположение 1</label>
-          <input type="checkbox" id="location1" style="display: none;">
-          
-          <label for="location2" onclick="toggleSelection(this)">Местоположение 2</label>
-          <input type="checkbox" id="location2" style="display: none;">
-        </div>
-      </div>
-      <button onclick="applyFilters()">Применить</button>
-    </div>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="searchContainer">
+      <input type="text" id="searchInput" placeholder="Поиск" oninput="updateShopList()">
+      <button id="searchButton" onclick="performSearch()">Искать</button>
+      <!-- Replace the single-select with a multi-select and add the Select2 class -->
+      
+      <div id="shopListContainer"></div>
+      
+      <a href="/navigator/navFirstFloor.html"><button>Навигатор</button></a>
+      <a href="/second/secondFloor.html"><button>Второй этаж</button></a>
+      <select id="categoryDropdown" multiple="multiple" class="js-example-basic-multiple"></select>
   </div>
-  <div id="shopInfoModal" style="display: none;">
-    <img id="shopPhoto" src="" alt="Shop Photo">
-    <p id="shopDescription">Shop Description</p>
-</div>
+
+  
+  <!-- Add the Select2 library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script src="public/js/main.js"></script>
+
+  <script>
+      // Initialize Select2 for the multi-select dropdown
+      $(document).ready(function() {
+          $('.js-example-basic-multiple').select2();
+      });
+  </script>
     <svg id="floorSvg" viewBox="0.00 0.00 740.00 672.00" width="48%" height="48%" style="transform: translate(50%, 8%)">
         <g>
             <path stroke="#a7abae" vector-effect="non-scaling-stroke" d="
