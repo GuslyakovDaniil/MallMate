@@ -1,0 +1,43 @@
+INSERT INTO categories (name) VALUES
+    ('Электроника'),
+    ('Одежда'),
+    ('Книги'),
+    ('Игрушки'),
+    ('Другое');
+
+INSERT INTO shops (name, description, image_url) VALUES
+    ('Детский мир', 'Your go-to place for gadgets and electronics.', 'tech_shop.jpg'),
+    ('5 кармаNов', 'Trendy clothing for all occasions.', 'fashion_boutique.jpg'),
+    ('Читай-город', 'A vast collection of books for every reader.', 'bookstore_paradise.jpg');
+
+INSERT INTO shop_categories (shop_id, category_id) VALUES
+    (1, 4), 
+    (1, 2), 
+	(1, 5),
+    (2, 2), 
+    (3, 3) 
+
+-- Создание таблицы "categories"
+CREATE TABLE IF NOT EXISTS public.categories
+(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+-- Создание таблицы "shops"
+CREATE TABLE IF NOT EXISTS public.shops
+(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    image_url VARCHAR(255)
+);
+
+-- Создание таблицы "shop_categories" для связи "many-to-many" между магазинами и категориями
+CREATE TABLE IF NOT EXISTS public.shop_categories
+(
+    shop_id INTEGER REFERENCES shops(id),
+    category_id INTEGER REFERENCES categories(id),
+    PRIMARY KEY (shop_id, category_id)
+);
+
