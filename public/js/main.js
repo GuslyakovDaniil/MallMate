@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
     const shopListContainer = document.getElementById('shopListContainer');
+    const categoryDropdown = document.getElementById('categoryDropdown');
 
     function fetchResultsFromServer(searchTerm) {
-        fetch(`/api/search?term=${searchTerm}`)
+        const selectedCategory = categoryDropdown.value;
+
+        fetch(`/api/search?term=${searchTerm}&category=${selectedCategory}`)
             .then(response => response.json())
             .then(data => displayShopList(data))
             .catch(error => console.error('Error fetching data:', error));
@@ -35,10 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function hideShopList() {
-    shopListContainer.innerHTML = ''; // Clear the content
-    shopListContainer.classList.remove('active');
-}
-
+        shopListContainer.innerHTML = '';
+        shopListContainer.classList.remove('active');
+    }
 
     // Добавляем обработчик фокуса на поле ввода
     const searchInput = document.getElementById('searchInput');
@@ -49,16 +51,28 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', function (event) {
         const isClickInsideShopList = shopListContainer.contains(event.target);
         const isClickOnSearchInput = event.target === searchInput;
-    
+
         if (!isClickInsideShopList && !isClickOnSearchInput) {
             hideShopList();
         } else if (isClickInsideShopList && event.target.tagName === 'LI') {
-            // If the click is inside the shop list and on an LI element, hide the list
             hideShopList();
         }
     });
-    
-    
-    
-    
+
+    // Fetch categories and update the dropdown
+    fetch('/api/categories')
+        .then(response => response.json())
+        .then(data => updateCategoryDropdown(data))
+        .catch(error => console.error('Error fetching categories:', error));
 });
+
+function updateCategoryDropdown(categories) {
+    const categoryDropdown = document.getElementById('categoryDropdown');
+
+    categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category;
+        categoryDropdown.appendChild(option);
+    });
+}
