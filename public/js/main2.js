@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 .catch(error => console.error('Error fetching data:', error));
         }
     }
-
     function updateShopList() {
         const searchTerm = document.getElementById('pointBInput').value.toLowerCase();
         fetchResultsFromServer(searchTerm);
@@ -33,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const li = document.createElement('li');
                 li.textContent = shop.name;
                 li.addEventListener('click', function () {
-                    document.getElementById('searchInput').value = shop.name;
+                    document.getElementById('pointBInput').value = shop.name;
                     incrementSelectionCount(shop.id);
                     hideShopList();
                 });
@@ -82,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.addEventListener('click', function (event) {
         const isClickInsideShopList = shopListContainer.contains(event.target);
-        const isClickOnpointBInput = event.target === pointBInput;
+        const isClickOnpointBInput= event.target === pointBInput;
 
         if (!isClickInsideShopList && !isClickOnpointBInput) {
             hideShopList();

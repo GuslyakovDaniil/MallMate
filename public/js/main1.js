@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 .catch(error => console.error('Error fetching data:', error));
         }
     }
-
     function updateShopList() {
         const searchTerm = document.getElementById('pointAInput').value.toLowerCase();
         fetchResultsFromServer(searchTerm);
@@ -33,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const li = document.createElement('li');
                 li.textContent = shop.name;
                 li.addEventListener('click', function () {
-                    document.getElementById('searchInput').value = shop.name;
+                    document.getElementById('pointAInput').value = shop.name;
                     incrementSelectionCount(shop.id);
                     hideShopList();
                 });
