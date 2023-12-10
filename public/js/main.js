@@ -5,10 +5,18 @@ document.addEventListener('DOMContentLoaded', function () {
     function fetchResultsFromServer(searchTerm) {
         const selectedCategories = Array.from(categoryDropdown.selectedOptions).map(option => option.value);
 
-        fetch(`/api/search?term=${searchTerm}&categories=${selectedCategories.join(',')}`)
-            .then(response => response.json())
-            .then(data => displayShopList(data))
-            .catch(error => console.error('Error fetching data:', error));
+        // Check if no categories are selected
+        if (selectedCategories.length === 0) {
+            fetch(`/api/search?term=${searchTerm}`)
+                .then(response => response.json())
+                .then(data => displayShopList(data))
+                .catch(error => console.error('Error fetching data:', error));
+        } else {
+            fetch(`/api/search?term=${searchTerm}&categories=${selectedCategories.join(',')}`)
+                .then(response => response.json())
+                .then(data => displayShopList(data))
+                .catch(error => console.error('Error fetching data:', error));
+        }
     }
 
     function updateShopList() {
@@ -42,10 +50,21 @@ document.addEventListener('DOMContentLoaded', function () {
         shopListContainer.classList.remove('active');
     }
 
-    // Добавляем обработчик ввода символа в поле ввода
+    // Add 'input' event listener to the search input
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', function () {
         updateShopList();
+    });
+
+    // Add 'focus' event listener to show shop list when the input is focused
+    searchInput.addEventListener('focus', function () {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        fetchResultsFromServer(searchTerm);
+    });
+
+    // Add 'blur' event listener to hide shop list when the input loses focus
+    searchInput.addEventListener('blur', function () {
+        setTimeout(hideShopList, 200); // Delay the hiding to allow click events on the shop list
     });
 
     document.addEventListener('click', function (event) {
@@ -70,8 +89,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         categories.forEach(category => {
             const option = document.createElement('option');
-            option.value = category;
-            option.textContent = category;
+            option.value = category.id; // Assuming each category has an 'id' property
+            option.textContent = category.name; // Assuming each category has a 'name' property
             categoryDropdown.appendChild(option);
         });
 

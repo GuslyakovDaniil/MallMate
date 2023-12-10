@@ -26,13 +26,18 @@ app.get('/api/search', async (req, res) => {
     const categories = req.query.categories ? req.query.categories.split(',') : [];
 
     try {
-        let query = 'SELECT * FROM shops WHERE LOWER(name) LIKE $1';
+        let query = 'SELECT DISTINCT shops.* FROM shops';
 
         if (categories.length > 0) {
-            query += ` AND LOWER(category) IN (${categories.map((_, index) => `$${index + 2}`).join(',')})`;
+            query += ' INNER JOIN shop_categories ON shops.id = shop_categories.shop_id';
+            query += ' WHERE LOWER(shops.name) LIKE $1 AND shop_categories.category_id IN (';
+            query += categories.map((_, index) => `$${index + 2}`).join(',');
+            query += ')';
+        } else {
+            query += ' WHERE LOWER(shops.name) LIKE $1';
         }
 
-        const params = [`%${searchTerm}%`, ...categories.map(category => category.toLowerCase())];
+        const params = [`%${searchTerm}%`, ...categories.map(category => parseInt(category))];
 
         const result = await pool.query(query, params);
         res.json(result.rows);
@@ -45,9 +50,8 @@ app.get('/api/search', async (req, res) => {
 // Обработчик для получения категорий
 app.get('/api/categories', async (req, res) => {
     try {
-        const result = await pool.query('SELECT DISTINCT category FROM shops');
-        const categories = result.rows.map(row => row.category);
-        res.json(categories);
+        const result = await pool.query('SELECT * FROM categories');
+        res.json(result.rows);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
