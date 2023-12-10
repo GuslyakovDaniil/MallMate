@@ -12,17 +12,13 @@
     <div id="searchContainer">
       <input type="text" id="searchInput" placeholder="Поиск" oninput="updateShopList()">
       <button id="searchButton" onclick="performSearch()">Искать</button>
-      <!-- Replace the single-select with a multi-select and add the Select2 class -->
       
       <div id="shopListContainer"></div>
       
       <a href="/navigator"><button>Навигатор</button></a>
-      <a href="/second"><button>Второй этаж</button></a>
+      <!-- <a href="/second"><button>Второй этаж</button></a> -->
       <select id="categoryDropdown" multiple="multiple" class="js-example-basic-multiple"></select>
   </div>
-
-  
-  <!-- Add the Select2 library -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
   <script src="public/js/main.js"></script>
