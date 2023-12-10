@@ -61,14 +61,30 @@ app.get('/api/categories', async (req, res) => {
 // Обработчик для корневого пути
 app.get('/', (req, res) => {
     // Замените на путь к вашему index.html
-    res.sendFile(path.join(__dirname, 'first','firstFloor1.html'));
+    res.sendFile(path.join(__dirname, 'first','firstFloor.html'));
 });
 // Обработчик для корневого пути
 app.get('/second', (req, res) => {
     // Замените на путь к вашему index.html
-    res.sendFile(path.join(__dirname, 'second','secondFloor1.html'));
+    res.sendFile(path.join(__dirname, 'second','secondFloor.html'));
 });
-
+// Обработчик для корневого пути
+app.get('/navigator', (req, res) => {
+    // Замените на путь к вашему index.html
+    res.sendFile(path.join(__dirname, 'navigator','nav.html'));
+});
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
+});
+// Увеличение счетчика выбора для магазина
+app.post('/api/incrementSelectionCount', async (req, res) => {
+    const shopId = req.query.shopId;
+
+    try {
+        await pool.query('UPDATE shops SET selection_count = selection_count + 1 WHERE id = $1', [shopId]);
+        res.sendStatus(200);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });

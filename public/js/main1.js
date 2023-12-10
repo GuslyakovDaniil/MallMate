@@ -20,21 +20,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateShopList() {
-        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const searchTerm = document.getElementById('pointAInput').value.toLowerCase();
         fetchResultsFromServer(searchTerm);
     }
 
     function displayShopList(shops) {
         shopListContainer.innerHTML = '';
-    
+
         if (shops.length > 0) {
             const ul = document.createElement('ul');
             shops.forEach(shop => {
                 const li = document.createElement('li');
                 li.textContent = shop.name;
                 li.addEventListener('click', function () {
-                    document.getElementById('searchInput').value = shop.name;
-                    incrementSelectionCount(shop.id);
+                    document.getElementById('pointAInput').value = shop.name;
                     hideShopList();
                 });
                 ul.appendChild(li);
@@ -45,18 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
             hideShopList();
         }
     }
-    
-    function incrementSelectionCount(shopId) {
-        // Используйте метод POST для увеличения счетчика выбора
-        fetch(`/api/incrementSelectionCount?shopId=${shopId}`, { method: 'POST' })
-            .then(response => {
-                if (!response.ok) {
-                    console.error('Ошибка при увеличении счетчика выбора:', response.statusText);
-                }
-            })
-            .catch(error => console.error('Ошибка при увеличении счетчика выбора:', error));
-    }
-    
 
     function hideShopList() {
         shopListContainer.innerHTML = '';
@@ -64,27 +51,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Add 'input' event listener to the search input
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', function () {
+    const pointAInput = document.getElementById('pointAInput');
+    pointAInput.addEventListener('input', function () {
         updateShopList();
     });
 
     // Add 'focus' event listener to show shop list when the input is focused
-    searchInput.addEventListener('focus', function () {
-        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    pointAInput.addEventListener('focus', function () {
+        const searchTerm = document.getElementById('pointAInput').value.toLowerCase();
         fetchResultsFromServer(searchTerm);
     });
 
     // Add 'blur' event listener to hide shop list when the input loses focus
-    searchInput.addEventListener('blur', function () {
+    pointAInput.addEventListener('blur', function () {
         setTimeout(hideShopList, 200); // Delay the hiding to allow click events on the shop list
     });
 
     document.addEventListener('click', function (event) {
         const isClickInsideShopList = shopListContainer.contains(event.target);
-        const isClickOnSearchInput = event.target === searchInput;
+        const isClickOnpointAInput = event.target === pointAInput;
 
-        if (!isClickInsideShopList && !isClickOnSearchInput) {
+        if (!isClickInsideShopList && !isClickOnpointAInput) {
             hideShopList();
         } else if (isClickInsideShopList && event.target.tagName === 'LI') {
             hideShopList();

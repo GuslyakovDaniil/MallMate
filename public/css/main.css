@@ -1,5 +1,5 @@
 body {
-    background-image: url('img/gradient.jpg');
+    background-image: url('/public/img/gradient.jpg');
     background-size: cover;
     background-repeat: repeat;
     margin: 0;
