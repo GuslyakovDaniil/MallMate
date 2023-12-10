@@ -6,20 +6,23 @@
     <title>Магазины</title>
     <link rel="stylesheet" href="public/css/main.css">
     <style>
-        #shopListContainer {
-            position: absolute;
-            max-height: 200px;
-            overflow-y: auto;
-            border: none;
-            padding: 10px;
-            background-color: transparent;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
+#shopListContainer {
+    position: absolute;
+    max-height: 200px;
+    overflow-y: auto;
+    border: none;
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    z-index: 1; /* Add this line to set the z-index */
+    top: 60px;
+}
 
-        #shopListContainer.active {
-            background-color: #f4f4f4;
-        }
+#shopListContainer.active {
+    background-color: #f4f4f4;
+    z-index: 2; /* Increase the z-index when active */
+}
 
         #shopListContainer ul {
             list-style-type: none;

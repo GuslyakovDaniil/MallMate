@@ -35,8 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function hideShopList() {
-        shopListContainer.classList.remove('active');
-    }
+    shopListContainer.innerHTML = ''; // Clear the content
+    shopListContainer.classList.remove('active');
+}
+
 
     // Добавляем обработчик фокуса на поле ввода
     const searchInput = document.getElementById('searchInput');
@@ -44,10 +46,19 @@ document.addEventListener('DOMContentLoaded', function () {
         updateShopList();
     });
 
-    // Добавляем обработчик клика на документе, чтобы скрывать список магазинов
     document.addEventListener('click', function (event) {
-        if (event.target !== shopListContainer && !shopListContainer.contains(event.target) && event.target !== searchInput) {
+        const isClickInsideShopList = shopListContainer.contains(event.target);
+        const isClickOnSearchInput = event.target === searchInput;
+    
+        if (!isClickInsideShopList && !isClickOnSearchInput) {
+            hideShopList();
+        } else if (isClickInsideShopList && event.target.tagName === 'LI') {
+            // If the click is inside the shop list and on an LI element, hide the list
             hideShopList();
         }
     });
+    
+    
+    
+    
 });
