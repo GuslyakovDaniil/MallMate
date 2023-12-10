@@ -26,14 +26,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function displayShopList(shops) {
         shopListContainer.innerHTML = '';
-
+    
         if (shops.length > 0) {
             const ul = document.createElement('ul');
             shops.forEach(shop => {
                 const li = document.createElement('li');
                 li.textContent = shop.name;
                 li.addEventListener('click', function () {
-                    document.getElementById('pointBInput').value = shop.name;
+                    document.getElementById('searchInput').value = shop.name;
+                    incrementSelectionCount(shop.id);
                     hideShopList();
                 });
                 ul.appendChild(li);
@@ -44,6 +45,18 @@ document.addEventListener('DOMContentLoaded', function () {
             hideShopList();
         }
     }
+    
+    function incrementSelectionCount(shopId) {
+        // Используйте метод POST для увеличения счетчика выбора
+        fetch(`/api/incrementSelectionCount?shopId=${shopId}`, { method: 'POST' })
+            .then(response => {
+                if (!response.ok) {
+                    console.error('Ошибка при увеличении счетчика выбора:', response.statusText);
+                }
+            })
+            .catch(error => console.error('Ошибка при увеличении счетчика выбора:', error));
+    }
+    
 
     function hideShopList() {
         shopListContainer.innerHTML = '';
