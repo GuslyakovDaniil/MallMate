@@ -20,7 +20,6 @@ app.use(bodyParser.json());
 // Middleware для обслуживания статических файлов
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
-// Обработчик для поиска магазинов
 app.get('/api/search', async (req, res) => {
     const searchTerm = req.query.term.toLowerCase();
     const categories = req.query.categories ? req.query.categories.split(',') : [];
@@ -37,6 +36,9 @@ app.get('/api/search', async (req, res) => {
             query += ' WHERE LOWER(shops.name) LIKE $1';
         }
 
+        // Добавлен ORDER BY для сортировки по убыванию selection_count
+        query += ' ORDER BY shops.selection_count DESC';
+
         const params = [`%${searchTerm}%`, ...categories.map(category => parseInt(category))];
 
         const result = await pool.query(query, params);
@@ -46,6 +48,7 @@ app.get('/api/search', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
 
 // Обработчик для получения категорий
 app.get('/api/categories', async (req, res) => {
