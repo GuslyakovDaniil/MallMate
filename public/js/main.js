@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
         shopListContainer.classList.remove('active');
     }
 
-    // Добавляем обработчик фокуса на поле ввода
+    // Добавляем обработчик ввода символа в поле ввода
     const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('focus', function () {
+    searchInput.addEventListener('input', function () {
         updateShopList();
     });
 
