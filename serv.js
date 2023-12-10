@@ -61,7 +61,12 @@ app.get('/api/categories', async (req, res) => {
 // Обработчик для корневого пути
 app.get('/', (req, res) => {
     // Замените на путь к вашему index.html
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'first','firstFloor1.html'));
+});
+// Обработчик для корневого пути
+app.get('/second', (req, res) => {
+    // Замените на путь к вашему index.html
+    res.sendFile(path.join(__dirname, 'second','secondFloor1.html'));
 });
 
 app.listen(port, () => {

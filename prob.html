@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазины</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- Add the Select2 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+</head>
+<body>
+    <div id="searchContainer">
+        <input type="text" id="searchInput" placeholder="Поиск" oninput="updateShopList()">
+        <button id="searchButton" onclick="performSearch()">Искать</button>
+        <!-- Replace the single-select with a multi-select and add the Select2 class -->
+        <select id="categoryDropdown" multiple="multiple" class="js-example-basic-multiple"></select>
+        <div id="shopListContainer"></div>
+        <a href="/navigator/navFirstFloor.html"><button>Навигатор</button></a>
+        <a href="/second/secondFloor.html"><button>Второй этаж</button></a>
+    </div>
+    
+
+    <!-- Add the Select2 library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="public/js/main.js"></script>
+
+    <script>
+        // Initialize Select2 for the multi-select dropdown
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+</body>
+</html>
