@@ -66,10 +66,14 @@ app.get('/', (req, res) => {
     // Замените на путь к вашему index.html
     res.sendFile(path.join(__dirname, 'first','firstFloor.html'));
 });
+app.get('/index', (req, res) => {
+    // Замените на путь к вашему index.html
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 // Обработчик для корневого пути
 app.get('/second', (req, res) => {
     // Замените на путь к вашему index.html
-    res.sendFile(path.join(__dirname, 'second','secondFloor.html'));
+    res.sendFile(path.join(__dirname, 'second','secondFloor1.html'));
 });
 // Обработчик для корневого пути
 app.get('/navigator', (req, res) => {
