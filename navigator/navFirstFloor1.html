@@ -16,7 +16,9 @@
    margin: 0;
    overflow: hidden;
 }
-
+#findRouteButton {
+        display: none;
+      }
 #mapContainer {
    overflow: hidden; 
 }
@@ -362,8 +364,8 @@ background-color: #0056b3;
     <div id="shopListContainer"></div>
       
       <a href="/"><button>Главная страница</button></a>
-      <!-- <a href="/second/secondFloor.html"><button>Второй этаж</button></a> -->
-      <select id="categoryDropdown" multiple="multiple" class="js-example-basic-multiple"></select>
+      <a href="/navigator2"><button>Второй этаж</button></a>
+      <!-- <select id="categoryDropdown" multiple="multiple" class="js-example-basic-multiple"></select> -->
   </div>
 
   
@@ -372,6 +374,22 @@ background-color: #0056b3;
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
   <script src="/public/js/main1.js"></script>
   <script src="/public/js/main2.js"></script>
+  <script>
+     document.addEventListener("DOMContentLoaded", function() {
+    // Retrieve value from sessionStorage
+    var pointBText = sessionStorage.getItem('pointBText');
+
+// Set the value to pointBInput if pointBText is not null
+if (pointBText !== null) {
+  document.getElementById('pointBInput').value = pointBText;
+  console.log('Значение успешно загружено из сессии:', pointBText);
+}
+      document.getElementById('pointAInput').value = "Эскалатор (1 Этаж)";
+      
+
+      document.getElementById('findRouteButton').click();
+    });
+  </script>
   <script>
       // Initialize Select2 for the multi-select dropdown
       $(document).ready(function() {
@@ -404,26 +422,26 @@ var initialMap = [
                 2,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
                 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
                 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
-                2,0,0,2,0,2,2,0,2,2,2,2,0,2,2,0,2,2,2,0,2,2,2,2,2,0,2,2,2,2,2,2,2,0,2,2,2,2,2,0,0,0,0,0,0,0,0,2,
-                2,0,0,2,0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,2,
-                2,0,0,2,0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,2,
-                2,0,0,2,0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,0,0,0,2,2,2,2,
-                2,0,0,2,0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,2,2,2,0,0,0,2,
-                2,0,0,2,2,0,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,2,0,2,0,0,0,2,
-                2,0,0,2,0,0,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,2,0,2,0,0,0,2,
-                2,0,0,2,0,0,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,2,0,2,0,0,0,2,
-                2,0,0,2,0,0,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,0,0,2,0,0,0,2,
-                2,2,2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,2,0,0,0,2,
-                2,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,0,0,2,0,0,0,2,
+                2,0,0,2,0,2,2,0,2,2,2,2,0,2,2,0,2,2,2,0,2,2,2,2,2,0,2,2,2,2,2,2,2,0,2,2,2,2,0,0,0,0,0,0,0,0,0,2,
+                2,0,0,2,0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,2,
+                2,0,0,2,0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,2,
+                2,0,0,2,0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,2,2,2,2,
+                2,0,0,2,0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,2,2,2,0,0,0,2,
+                2,0,0,2,2,0,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,2,0,2,0,0,0,2,
+                2,0,0,2,0,0,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,2,0,2,0,0,0,2,
+                2,0,0,2,0,0,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,2,0,2,0,0,0,2,
+                2,0,0,2,0,0,0,0,0,0,0,2,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,2,
+                2,2,2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,2,0,0,0,2,
+                2,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,2,
                 2,0,0,0,0,2,0,0,2,2,2,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,2,
-                2,2,0,0,0,2,0,0,2,0,2,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,0,0,2,0,0,0,2,
-                2,2,0,0,0,2,2,2,2,2,2,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,0,0,2,0,0,0,2,
-                2,2,0,0,0,2,0,0,2,0,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,0,0,2,0,0,0,2,
-                2,0,2,0,0,2,0,0,2,2,2,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,2,2,2,2,2,2,2,2,2,0,0,0,0,2,0,0,0,2,
-                2,0,2,0,0,2,0,0,0,0,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,0,0,2,0,0,0,2,
-                2,0,0,2,0,2,2,2,2,2,2,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,0,0,2,0,0,0,2,
-                2,0,0,2,0,0,0,0,0,0,2,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,2,0,0,0,0,2,0,0,0,2,
-                2,2,2,2,2,2,2,2,2,2,2,0,0,2,2,0,2,2,2,0,2,2,2,0,2,2,2,0,2,2,2,2,2,0,2,2,2,2,2,0,0,0,0,2,2,2,2,2,
+                2,2,0,0,0,2,0,0,2,0,2,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,2,
+                2,2,0,0,0,2,2,2,2,2,2,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,2,
+                2,2,0,0,0,2,0,0,2,0,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,2,
+                2,0,2,0,0,2,0,0,2,2,2,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,2,2,2,2,2,2,2,2,0,0,0,0,0,2,0,0,0,2,
+                2,0,2,0,0,2,0,0,0,0,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,2,
+                2,0,0,2,0,2,2,2,2,2,2,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,2,
+                2,0,0,2,0,0,0,0,0,0,2,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,2,
+                2,2,2,2,2,2,2,2,2,2,2,0,0,2,2,0,2,2,2,0,2,2,2,0,2,2,2,0,2,2,2,2,2,0,2,2,2,2,0,0,0,0,0,2,2,2,2,2,
                 2,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
                 2,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
                 2,0,0,0,0,0,2,2,0,0,2,2,0,2,2,2,2,0,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,0,2,2,2,2,0,0,0,0,0,0,0,0,0,2,
@@ -660,98 +678,50 @@ initMapAndSearch();
 function updatePointA(id) {
     if (id === "Главный вход") {
         map[425] = 1;
-      sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "DNS") {
         map[554] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "5 кармаNов") {
         map[679] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Hoff") {
         map[687] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Guess") {
         map[691] = 1;
     } else if (id === "Askona") {
         map[697] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Befree") {
         map[705] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "BORK") {
         map[1599] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "CASIO") {
         map[1603] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Gloria Jeans") {
         map[1607] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "DUB") {
         map[1611] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Acoola") {
         map[1617] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Familia") {
         map[1237] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Haier") {
         map[1740] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Amazing Red") {
         map[1745] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Читай-город") {
         map[1753] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Kari") {
         map[1761] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     }else if (id === "JNS") {
         map[1865] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     }else if (id === "Эскалатор (1 Этаж)") {
         map[1050] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     }else if (id === "Лестница (у входа)") {
         map[132] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     }else if (id === "Лестница") {
         map[1868] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     }else if (id === "Туалет (у входа)") {
         map[321] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     }else if (id === "Туалет") {
         map[1163] = 1;
-        sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
-    }else if (id === "Restore" || id === "Loverepublic" || id === "Magic Box" || id === "Motherbear" || id === "NetWork" || id === "New Yorker" || id ==="O’STIN" || id ==="Детский мир" || id ==="RE" || id ==="MAAG" || id ==="SOKOLOV" || id ==="Polo" || id ==="Xiaomi" || id ==="Zolla" || id ==="oodji" || id ==="Мегафон" || id ==="Лэтуаль" || id ==="М.Видео" || id ==="Золотое яблоко" || id ==="МТС" || id ==="Эскалатор (2 Этаж)" || id ==="Лестница (2 Этаж)" || id ==="Лестница2 (2 Этаж)" || id ==="Туалет (2 Этаж)" ) {
-      sessionStorage.setItem('pointAText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
-      window.location.href = "/navigator11";
     }
 }
 
@@ -759,103 +729,52 @@ function updatePointA(id) {
 function updatePointB(id) {
   if (id === "Главный вход") {
         map[425] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "DNS") {
         map[554] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "5 кармаNов") {
         map[679] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Hoff") {
         map[687] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Guess") {
         map[691] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Askona") {
         map[697] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Befree") {
         map[705] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "BORK") {
         map[1599] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "CASIO") {
         map[1603] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Gloria Jeans") {
         map[1607] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "DUB") {
         map[1611] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Acoola") {
         map[1617] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Familia") {
         map[1237] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Haier") {
         map[1740] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Amazing Red") {
         map[1745] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Читай-город") {
         map[1753] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     } else if (id === "Kari") {
         map[1761] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     }else if (id === "JNS") {
         map[1867] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     }else if (id === "Эскалатор (1 Этаж)") {
         map[1050] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     }else if (id === "Лестница (у входа)") {
         map[132] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     }else if (id === "Лестница") {
         map[1868] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     }else if (id === "Туалет (у входа)") {
         map[321] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
     }else if (id === "Туалет") {
         map[1163] = 3;
-        sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
-    }else if (id === "Restore" || id === "Loverepublic" || id === "Magic Box" || id === "Motherbear" || id === "NetWork" || id === "New Yorker" || id ==="O’STIN" || id ==="Детский мир" || id ==="RE" || id ==="MAAG" || id ==="SOKOLOV" || id ==="Polo" || id ==="Xiaomi" || id ==="Zolla" || id ==="oodji" || id ==="Мегафон" || id ==="Лэтуаль" || id ==="М.Видео" || id ==="Золотое яблоко" || id ==="МТС" || id ==="Эскалатор (2 Этаж)" || id ==="Лестница (2 Этаж)" || id ==="Лестница2 (2 Этаж)" || id ==="Туалет (2 Этаж)" ) {
-      sessionStorage.setItem('pointBText', id);
-      console.log('Значение успешно сохранено в сессию:', id);
-      window.location.href = "/navigator1";
     }
 }
-
 // Пример использования (вызов этих функций после ввода id в соответствующие поля):
 var pointAId = document.getElementById('pointAInput').value;
   var pointBId = document.getElementById('pointBInput').value;

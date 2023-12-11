@@ -81,10 +81,18 @@ app.get('/navigator1', (req, res) => {
     // Замените на путь к вашему index.html
     res.sendFile(path.join(__dirname, 'navigator','navFirstFloor.html'));
 });
+app.get('/navigator11', (req, res) => {
+    // Замените на путь к вашему index.html
+    res.sendFile(path.join(__dirname, 'navigator','navSecondFloor1.html'));
+});
 // Обработчик для корневого пути
 app.get('/navigator2', (req, res) => {
     // Замените на путь к вашему index.html
     res.sendFile(path.join(__dirname, 'navigator','navSecondFloor.html'));
+});
+app.get('/navigator22', (req, res) => {
+    // Замените на путь к вашему index.html
+    res.sendFile(path.join(__dirname, 'navigator','navFirstFloor1.html'));
 });
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);

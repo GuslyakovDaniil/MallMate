@@ -364,7 +364,7 @@ background-color: #0056b3;
     <div id="shopListContainer"></div>
       
       <a href="/"><button>Главная страница</button></a>
-      <a href="/navigator1"><button>Первый этаж</button></a>
+      <a href="/navigator22"><button>Первый этаж</button></a>
       <!-- <select id="categoryDropdown" multiple="multiple" class="js-example-basic-multiple"></select> -->
   </div>
 
@@ -376,16 +376,17 @@ background-color: #0056b3;
   <script src="/public/js/main2.js"></script>
   <script>
  document.addEventListener("DOMContentLoaded", function() {
-      // Retrieve value from sessionStorage
-      var pointBText = sessionStorage.getItem('pointBText');
+   // Retrieve value from sessionStorage
+   var pointAText = sessionStorage.getItem('pointAText');
 
-      // Set the value to pointBInput if pointBText is not null
-      if (pointBText !== null) {
-        document.getElementById('pointBInput').value = pointBText;
-        console.log('Значение успешно загружено из сессии:', pointBText);
-      }
+// Set the value to pointAInput if it exists
+if (pointAText !== null) {
+  document.getElementById('pointAInput').value = pointAText;
+  console.log('Значение успешно загружено из сессии (pointA):', pointAText);
+}
+   
 
-      document.getElementById('pointAInput').value = "Эскалатор (2 Этаж)";
+      document.getElementById('pointBInput').value = "Эскалатор (2 Этаж)";
 
       document.getElementById('findRouteButton').click();
     });
