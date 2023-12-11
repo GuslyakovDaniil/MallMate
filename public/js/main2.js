@@ -68,15 +68,13 @@ document.addEventListener('DOMContentLoaded', function () {
         updateShopList();
     });
 
-    // Add 'focus' event listener to show shop list when the input is focused
     pointBInput.addEventListener('focus', function () {
         const searchTerm = document.getElementById('pointBInput').value.toLowerCase();
         fetchResultsFromServer(searchTerm);
     });
 
-    // Add 'blur' event listener to hide shop list when the input loses focus
     pointBInput.addEventListener('blur', function () {
-        setTimeout(hideShopList, 200); // Delay the hiding to allow click events on the shop list
+        setTimeout(hideShopList, 5000);
     });
 
     document.addEventListener('click', function (event) {

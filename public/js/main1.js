@@ -74,9 +74,9 @@ document.addEventListener('DOMContentLoaded', function () {
         fetchResultsFromServer(searchTerm);
     });
 
-    // Add 'blur' event listener to hide shop list when the input loses focus
+    
     pointAInput.addEventListener('blur', function () {
-        setTimeout(hideShopList, 200); // Delay the hiding to allow click events on the shop list
+        setTimeout(hideShopList, 5000);
     });
 
     document.addEventListener('click', function (event) {
